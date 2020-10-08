@@ -1,0 +1,53 @@
+.cards__message_news {
+  top: 61px;
+  right: 16px;
+}
+
+@media screen and (min-width: 360px) {
+  .cards__message_news {
+    top: 16px;
+    right: 61px;
+  }
+}
+
+@media screen and (min-width: 534px) {
+  .cards__message_news {
+    top: 53px;
+    right: 8px;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .cards__message_news {
+    top: 8px;
+    right: 53px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cards__message_news {
+    top: 53px;
+    right: 8px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cards__message_news {
+    top: 61px;
+    right: 16px;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .cards__message_news {
+    top: 16px;
+    right: 61px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cards__message_news {
+    top: 24px;
+    right: 69px;
+  }
+}

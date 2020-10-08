@@ -1,0 +1,56 @@
+.cards__message {
+  display: none;
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 500;
+  position: absolute;
+  text-align: center;
+  top: 16px;
+  right: 61px;
+}
+
+@media screen and (min-width: 534px) {
+  .cards__message {
+    top: 53px;
+    right: 8px;
+  }
+}
+
+@media screen and (min-width: 608px) {
+  .cards__message {
+    top: 8px;
+    right: 53px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cards__message {
+    top: 53px;
+    right: 8px;
+  }
+}
+
+@media screen and (min-width: 930px) {
+  .cards__message {
+    top: 8px;
+    right: 53px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cards__message {
+    top: 16px;
+    right: 61px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cards__message {
+    top: 24px;
+    right: 69px;
+  }
+}

@@ -1,0 +1,28 @@
+.intro__container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 32px;
+}
+
+@media screen and (min-width: 425px) {
+  .intro__container {
+    max-width: 448px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .intro__container {
+    box-sizing: content-box;
+    padding-top: 38px;
+    padding-bottom: 48px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .intro__container {
+    max-width: 608px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}

@@ -1,0 +1,9 @@
+.cards__title {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .cards__title {
+    margin-top: 12px;
+  }
+}

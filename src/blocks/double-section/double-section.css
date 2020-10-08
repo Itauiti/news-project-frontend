@@ -1,0 +1,6 @@
+@import url(./_photo/double-section_photo.css);
+
+.double-section {
+  display: flex;
+  flex-direction: column;
+}

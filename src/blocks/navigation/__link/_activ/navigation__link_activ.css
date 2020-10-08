@@ -1,0 +1,5 @@
+@media screen and (min-width: 630px) {
+  .navigation__link_activ {
+    border-bottom: 3px solid;
+  }
+}

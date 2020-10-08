@@ -1,0 +1,23 @@
+@import url(./_size/_big/title_size_big.css);
+@import url(./_size/_medium/title_size_medium.css);
+@import url(./_size/_small/title_size_small.css);
+
+.title {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  max-width: 270px;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    max-width: 336px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    max-width: 500px;
+  }
+}

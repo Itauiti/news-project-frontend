@@ -1,0 +1,23 @@
+.about__container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 80px;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .about__container {
+    flex-direction: row;
+    padding-top: 40px;
+    padding-bottom: 61px;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about__container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}

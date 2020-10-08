@@ -1,0 +1,27 @@
+.cards__sourse {
+  margin: 8px 0 0;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  text-transform: uppercase;
+  color: #B6BCBF;
+  align-self: self-end;
+}
+
+@media screen and (min-width: 768px) {
+  .cards__sourse {
+    margin: 12px 0 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cards__sourse {
+    margin: 16px 0 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cards__sourse {
+    margin: 18px 0 0;
+  }
+}

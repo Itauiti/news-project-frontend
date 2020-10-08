@@ -1,0 +1,9 @@
+.cards__icon_bookmark {
+  background: url(../../../../images/cards_bookmark.svg) center no-repeat;
+  background-color: #fff;
+}
+
+.cards__icon:hover {
+  background: url(../../../../images/cards_bookmark_hover.svg) center no-repeat;
+  background-color: #fff;
+}

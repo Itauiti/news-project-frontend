@@ -1,0 +1,23 @@
+.cards__text {
+  margin-top: 10px;
+  margin-bottom: 0;
+  max-height: 88px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+@media screen and (min-width: 1024px) {
+  .cards__text {
+    margin-top: 14px;
+    max-height: 110px;
+    -webkit-line-clamp: 5;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cards__text {
+    margin-top: 16px;
+  }
+}
