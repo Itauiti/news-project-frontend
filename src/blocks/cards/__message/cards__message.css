@@ -3,7 +3,7 @@
   background-color: #fff;
   border-radius: 8px;
   box-sizing: border-box;
-  padding: 8px 12px;
+  padding: 8px 9px;
   font-size: 12px;
   line-height: 24px;
   font-weight: 500;
@@ -45,6 +45,7 @@
   .cards__message {
     top: 16px;
     right: 61px;
+    padding: 8px 12px;
   }
 }
 
