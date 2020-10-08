@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Diploma">
+  <meta name="keywords" content="HTML5, CSS, JS, Webpack, Front-end">
+  <meta name="author" content="Irina Isaeva">
+  <link rel="icon" href="./images/favicon.svg" type="image/ico">
+  <title>Новости</title>
+  <link rel="stylesheet" href="./styles/index.dd7b3b239aedbe152330.css">
+</head>
+
+<body class="body">
+  <div class="double-section double-section_photo white-text">
+    <header class="header header_line_white">
+      <div class="header__container container">
+        <div class="header__logo" lang="en">NewsExplorer</div>
+        <button class="header__menu header__menu_open_white"></button>
+        <div class="header__nav-container">
+          <nav class="navigation">
+            <ul class="navigation__container">
+              <li class="navigation__item">
+                <a class="navigation__link white-text navigation__link_activ" href="index.html">Главная</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link white-text" href="news.html">Сохраненные статьи</a>
+              </li>
+            </ul>
+          </nav>
+          <button class="header__auth white-text">Авторизоваться
+            <img class="header__icon" src="./images/header_logout_white.png" alt="Иконка выхода из аккаунта">
+          </button>
+        </div>
+      </div>
+    </header>
+    <section class="intro">
+      <div class="intro__container container">
+        <h1 class="title title_size_big">Что в мире творится?</h1>
+        <p class="intro__text">
+          Находите самые свежие статьи на&nbsp;любую тему и&nbsp;сохраняйте в&nbsp;своём личном кабинете.
+        </p>
+        <div class="intro__search">
+          <input
+            class="intro__input"
+            type="text"
+            name="search"
+            placeholder="Введите тему новости"
+            minlength="2"
+            maxlength="30"
+          >
+          <button class="intro__button">Искать</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <main class="main">
+    <section class="results">
+      <div class="results__container container">
+        <h1 class="results__title title title_size_medium">Результаты поиска</h1>
+        <div class="cards">
+          <div class="cards__item">
+            <img class="cards__image" src="./images/card_1.jpg" alt="Фото из статьи">
+            <div class="cards__message">Войдите, чтобы сохранять статьи</div>
+            <div class="cards__icon cards__icon_bookmark"></div>
+            <div class="cards__text-container">
+              <div>
+                <p class="cards__date">2 августа, 2019</p>
+                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
+                <p class="cards__text">
+                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
+                </p>
+              </div>
+              <p class="cards__sourse">Лента.ру</p>
+            </div>
+          </div>
+          <div class="cards__item">
+            <img class="cards__image" src="./images/card_2.jpg" alt="Фото из статьи">
+            <div class="cards__message cards__message_activ">Войдите, чтобы сохранять статьи</div>
+            <div class="cards__icon cards__icon_bookmark"></div>
+            <div class="cards__text-container">
+              <div>
+                <p class="cards__date">2 августа, 2019</p>
+                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
+                <p class="cards__text">
+                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
+                </p>
+              </div>
+              <p class="cards__sourse">Лента.ру</p>
+            </div>
+          </div>
+          <div class="cards__item">
+            <img class="cards__image" src="./images/card_3.jpg" alt="Фото из статьи">
+            <div class="cards__message">Войдите, чтобы сохранять статьи</div>
+            <div class="cards__icon cards__icon_bookmark cards__icon_bookmark_activ"></div>
+            <div class="cards__text-container">
+              <div>
+                <p class="cards__date">2 августа, 2019</p>
+                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
+                <p class="cards__text">
+                  В 2016 году Америка относится к природе.
+                </p>
+              </div>
+              <p class="cards__sourse">Лента.ру</p>
+            </div>
+          </div>
+        </div>
+        <button class="results__button">Показать еще</button>
+      </div>
+    </section>
+
+    <section class="loading-block">
+      <div class="loading-block__container container">
+        <div class="loading-block__preloader"></div>
+        <p class="loading-block__text">Идет поиск новостей...</p>
+      </div>
+    </section>
+
+    <section class="loading-block">
+      <div class="loading-block__container container">
+        <img class="loading-block__img" src="./images/loading-block_not-found.svg" alt="Очень грустная лупа">
+        <p class="loading-block__title">
+          Ничего не найдено
+        </p>
+        <p class="loading-block__text">
+          К сожалению по вашему запросу ничего не&nbsp;найдено.
+        </p>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about__container container">
+        <picture class="about__image">
+          <source media="(min-width: 1440px)" srcset="./images/about_avatar_1440.jpg">
+          <source media="(min-width: 1024px)" srcset="./images/about_avatar_1024.jpg">
+          <source media="(min-width: 768px)" srcset="./images/about_avatar_768.jpg">
+          <img src="./images/about_avatar_320.jpg" alt="Фото автора сайта">
+        </picture>
+        <div class="about__text-container">
+          <h2 class="title title_size_medium">Об авторе</h2>
+          <p class="about__text">
+            Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь,
+            какими технологиями разработки владеете.
+          </p>
+          <p class="about__text">
+            Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились,
+            и чем можете помочь потенциальным заказчикам.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- для открытия попапов добавить popup_is-opened к popup -->
+    <div class="popup popup__login">
+      <div class="popup__content">
+        <img class="popup__close-icon" src="./images/popup_close-icon_white.svg" alt="Иконка закрытия окна">
+        <h3 class="popup__title">Вход</h3>
+        <form class="form" name="login" novalidate>
+          <div class="form__field">
+            <label for="email-login" class="form__label"><span class="popup__colored-text">Email</span></label>
+            <input
+              class="form__input form__input_type_email"
+              type="text"
+              id="email-login"
+              name="email-login"
+              placeholder="Введите Email"
+              required
+              pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
+            >
+            <span id="email-error-login" class="form__error">Неправильный формат email</span>
+          </div>
+          <div class="form__field">
+            <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
+            <input
+              class="form__input form__input_type_password"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Введите пароль"
+              required
+              minlength="8"
+              pattern=".[^\s]{8,}"
+            >
+            <span id="password-error-login" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+          </div>
+          <div class="form__field"></div>
+          <button type="submit" name="button" class="form__button ">Войти</button>
+        </form>
+        <p class="popup__text">или
+          <span class="popup__link popup__colored-text">Зарегистрироваться</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="popup popup__signup">
+      <div class="popup__content">
+        <img class="popup__close-icon" src="./images/popup_close-icon_white.svg" alt="Иконка закрытия окна">
+        <h3 class="popup__title">Регистрация</h3>
+        <form class="form" name="signup" novalidate>
+          <div class="form__field">
+            <label for="email-signup" class="form__label"><span class="popup__colored-text">Email</span></label>
+            <input
+              class="form__input form__input_type_email"
+              type="text"
+              id="email-signup"
+              name="email-signup"
+              placeholder="Введите Email"
+              required
+              pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
+            >
+            <span id="email-error-signup" class="form__error">Неправильный формат email</span>
+          </div>
+          <div class="form__field">
+            <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
+            <input
+              class="form__input form__input_type_password"
+              type="password"
+              id="password-signup"
+              name="password-signup"
+              placeholder="Введите пароль"
+              required
+              minlength="8"
+              pattern=".[^\s]{8,}"
+            >
+            <span id="password-error-signup" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+          </div>
+          <div class="form__field">
+            <label for="name" class="form__label"><span class="popup__colored-text">Имя</span></label>
+            <input
+              class="form__input form__input_type_name"
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Введите своё имя"
+              required
+              minlength="2"
+              maxlength="30"
+              pattern="^(?!-)(?!.*--)[А-ЯЁа-яёa-zA-z]+(-[А-ЯЁа-яёa-zA-Z]+)?"
+            >
+            <span id="name-error" class="form__error">Введите не менее 2 символов</span>
+          </div>
+          <div class="form__field">
+            <span id="already-exists-error" class="form__error form__error_centre">Такой пользователь уже есть</span>
+            <button type="submit" name="button" class="form__button form__button_activ">Зарегистрироваться</button>
+          </div>
+        </form>
+        <p class="popup__text">или <span class="popup__link popup__colored-text">Войти</span></p>
+      </div>
+    </div>
+
+    <div class="popup popup__successful-signup">
+      <div class="popup__content">
+        <img class="popup__close-icon" src="./images/popup_close-icon_white.svg" alt="Иконка закрытия окна">
+        <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
+        <p class="popup__text popup__text_left"><span class="popup__colored-text popup__link">Войти</span></p>
+      </div>
+    </div>
+
+  </main>
+  <footer class="footer">
+    <div class="footer__container container">
+      <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
+      <div class="footer__nav-container">
+        <nav class="navigation">
+          <ul class="navigation__container">
+            <li class="navigation__item">
+              <a class="navigation__link" href="index.html">Главная</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="footer__social">
+          <a class="footer__icon footer__icon_github" href="https://github.com/Itauiti" target="_blank">
+            <img src="./images/social_github.svg" alt="Иконка сайта Гитхаб">
+          </a>
+          <a class="footer__icon footer__icon_fb" href="https://www.facebook.com/irina.isaeva.5/" target="_blank">
+            <img src="./images/social_fb.svg" alt="Иконка сайта Фейсбук">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./scripts/index.55469a595af09351d43d.js"></script>
+</body>
+</html>
