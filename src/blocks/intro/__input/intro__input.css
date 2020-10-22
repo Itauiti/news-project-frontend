@@ -16,6 +16,10 @@
   color: #B6BCBF;
 }
 
+.intro__input:invalid:not(:placeholder-shown) + .intro__error {
+  display: block;
+}
+
 @media screen and (min-width: 534px) {
   .intro__input {
     padding: 17px 24px;

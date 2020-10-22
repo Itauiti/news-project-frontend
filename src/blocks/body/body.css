@@ -1,5 +1,9 @@
 @import url(./_noscroll/body_noscroll.css);
 
+html {
+  height: 100%;
+}
+
 .body {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 16px;
@@ -16,4 +20,10 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.main {
+  flex-grow: 1;
 }

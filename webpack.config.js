@@ -13,7 +13,7 @@ const PATHS = {
 module.exports = {
     entry: {
         index: './src/scripts/index.js',
-        news: './src/scripts/news.js'
+        news: './src/scripts/news/news.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

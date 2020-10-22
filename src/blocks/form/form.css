@@ -5,7 +5,3 @@
 @import url(./__error/form__error.css);
 @import url(./__error/_centre/form__error_centre.css);
 @import url(./__button/_activ/form__button_activ.css);
-
-.form {
-  margin-top: 22px;
-}

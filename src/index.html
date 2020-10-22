@@ -24,14 +24,14 @@
               <li class="navigation__item">
                 <a class="navigation__link white-text navigation__link_activ" href="index.html">Главная</a>
               </li>
-              <li class="navigation__item">
+              <li class="navigation__item navigation__item_articles">
                 <a class="navigation__link white-text" href="news.html">Сохраненные статьи</a>
               </li>
             </ul>
           </nav>
-          <button class="header__auth white-text">Авторизоваться
+          <div class="header__auth white-text">Авторизоваться
             <img class="header__icon" src="<%=require('./images/header_logout_white.png')%>" alt="Иконка выхода из аккаунта">
-          </button>
+          </div>
         </div>
       </div>
     </header>
@@ -41,97 +41,66 @@
         <p class="intro__text">
           Находите самые свежие статьи на&nbsp;любую тему и&nbsp;сохраняйте в&nbsp;своём личном кабинете.
         </p>
-        <div class="intro__search">
+        <form class="intro__search" name="search" novalidate>
           <input
             class="intro__input"
             type="text"
+            id="search"
             name="search"
             placeholder="Введите тему новости"
             required
             minlength="2"
             maxlength="30"
+            pattern=".[^\s]{2,}"
           >
           <button class="intro__button">Искать</button>
-        </div>
+          <span id="intro-error" class="intro__error">Введите не менее 2 символов</span>
+        </form>
       </div>
     </section>
   </div>
 
   <main class="main">
-    <section class="results">
+    <template id="loading-block-template" style="display: none;">
+      <section class="loading-block">
+        <div class="loading-block__container container">
+          <div class="loading-block__preloader"></div>
+          <img class="loading-block__img" src="<%=require('./images/loading-block_not-found.svg')%>" alt="Очень грустная лупа">
+          <p class="loading-block__title"></p>
+          <p class="loading-block__text"></p>
+        </div>
+      </section>
+    </template>
+    <section class="results"></section>
+    <template id="results-template" style="display: none;">
+
       <div class="results__container container">
         <h1 class="results__title title title_size_medium">Результаты поиска</h1>
         <div class="cards">
-          <div class="cards__item">
-            <img class="cards__image" src="<%=require('./images/card_1.jpg')%>" alt="Фото из статьи">
-            <div class="cards__message">Войдите, чтобы сохранять статьи</div>
-            <div class="cards__icon cards__icon_bookmark"></div>
-            <div class="cards__text-container">
-              <div>
-                <p class="cards__date">2 августа, 2019</p>
-                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
-                <p class="cards__text">
-                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
-                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-                </p>
-              </div>
-              <p class="cards__sourse">Лента.ру</p>
-            </div>
-          </div>
-          <div class="cards__item">
-            <img class="cards__image" src="<%=require('./images/card_2.jpg')%>" alt="Фото из статьи">
-            <div class="cards__message cards__message_activ">Войдите, чтобы сохранять статьи</div>
-            <div class="cards__icon cards__icon_bookmark"></div>
-            <div class="cards__text-container">
-              <div>
-                <p class="cards__date">2 августа, 2019</p>
-                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
-                <p class="cards__text">
-                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
-                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-                </p>
-              </div>
-              <p class="cards__sourse">Лента.ру</p>
-            </div>
-          </div>
-          <div class="cards__item">
-            <img class="cards__image" src="<%=require('./images/card_3.jpg')%>" alt="Фото из статьи">
-            <div class="cards__message">Войдите, чтобы сохранять статьи</div>
-            <div class="cards__icon cards__icon_bookmark cards__icon_bookmark_activ"></div>
-            <div class="cards__text-container">
-              <div>
-                <p class="cards__date">2 августа, 2019</p>
-                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
-                <p class="cards__text">
-                  В 2016 году Америка относится к природе.
-                </p>
-              </div>
-              <p class="cards__sourse">Лента.ру</p>
-            </div>
-          </div>
+
         </div>
         <button class="results__button">Показать еще</button>
       </div>
-    </section>
 
-    <section class="loading-block">
-      <div class="loading-block__container container">
-        <div class="loading-block__preloader"></div>
-        <p class="loading-block__text">Идет поиск новостей...</p>
-      </div>
-    </section>
+    </template>
 
-    <section class="loading-block">
-      <div class="loading-block__container container">
-        <img class="loading-block__img" src="<%=require('./images/loading-block_not-found.svg')%>" alt="Очень грустная лупа">
-        <p class="loading-block__title">
-          Ничего не найдено
-        </p>
-        <p class="loading-block__text">
-          К сожалению по вашему запросу ничего не&nbsp;найдено.
-        </p>
-      </div>
-    </section>
+    <template id="cards-item-template" style="display: none;">
+      <div class="cards__item">
+        <img class="cards__image" src="<%=require('./images/card_1.jpg')%>" alt="Фото из статьи">
+        <div class="cards__message">Войдите, чтобы сохранять статьи</div>
+        <div class="cards__icon"></div>
+        <div class="cards__text-container">
+          <div>
+            <p class="cards__date">2 августа, 2019</p>
+            <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
+            <p class="cards__text">
+              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+              складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
+            </p>
+          </div>
+          <p class="cards__sourse">Лента.ру</p>
+        </div>
+      </div></template>
 
     <section class="about">
       <div class="about__container container">
@@ -154,111 +123,117 @@
         </div>
       </div>
     </section>
-    <!-- для открытия попапов добавить popup_is-opened к popup -->
-    <div class="popup popup__login">
-      <div class="popup__content">
-        <img class="popup__close-icon" src="<%=require('./images/popup_close-icon_white.svg')%>" alt="Иконка закрытия окна">
-        <h3 class="popup__title">Вход</h3>
-        <form class="form" name="login" novalidate>
-          <div class="form__field">
-            <label for="email-login" class="form__label"><span class="popup__colored-text">Email</span></label>
-            <input
-              class="form__input form__input_type_email"
-              type="text"
-              id="email-login"
-              name="email-login"
-              placeholder="Введите Email"
-              required
-              pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
-            >
-            <span id="email-error-login" class="form__error">Неправильный формат email</span>
-          </div>
-          <div class="form__field">
-            <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
-            <input
-              class="form__input form__input_type_password"
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Введите пароль"
-              required
-              minlength="8"
-              pattern=".[^\s]{8,}"
-            >
-            <span id="password-error-login" class="form__error">Введите не менее 8 символов (без пробелов)</span>
-          </div>
-          <div class="form__field"></div>
-          <button type="submit" name="button" class="form__button ">Войти</button>
-        </form>
-        <p class="popup__text">или
-          <span class="popup__link popup__colored-text">Зарегистрироваться</span>
-        </p>
-      </div>
-    </div>
 
-    <div class="popup popup__signup">
-      <div class="popup__content">
-        <img class="popup__close-icon" src="<%=require('./images/popup_close-icon_white.svg')%>" alt="Иконка закрытия окна">
-        <h3 class="popup__title">Регистрация</h3>
-        <form class="form" name="signup" novalidate>
-          <div class="form__field">
-            <label for="email-signup" class="form__label"><span class="popup__colored-text">Email</span></label>
-            <input
-              class="form__input form__input_type_email"
-              type="text"
-              id="email-signup"
-              name="email-signup"
-              placeholder="Введите Email"
-              required
-              pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
-            >
-            <span id="email-error-signup" class="form__error">Неправильный формат email</span>
-          </div>
-          <div class="form__field">
-            <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
-            <input
-              class="form__input form__input_type_password"
-              type="password"
-              id="password-signup"
-              name="password-signup"
-              placeholder="Введите пароль"
-              required
-              minlength="8"
-              pattern=".[^\s]{8,}"
-            >
-            <span id="password-error-signup" class="form__error">Введите не менее 8 символов (без пробелов)</span>
-          </div>
-          <div class="form__field">
-            <label for="name" class="form__label"><span class="popup__colored-text">Имя</span></label>
-            <input
-              class="form__input form__input_type_name"
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Введите своё имя"
-              required
-              minlength="2"
-              maxlength="30"
-              pattern="^(?!-)(?!.*--)[А-ЯЁа-яёa-zA-z]+(-[А-ЯЁа-яёa-zA-Z]+)?"
-            >
-            <span id="name-error" class="form__error">Введите не менее 2 символов</span>
-          </div>
-          <div class="form__field">
-            <span id="already-exists-error" class="form__error form__error_centre">Такой пользователь уже есть</span>
-            <button type="submit" name="button" class="form__button form__button_activ">Зарегистрироваться</button>
-          </div>
-        </form>
-        <p class="popup__text">или <span class="popup__link popup__colored-text">Войти</span></p>
+    <template id="popup-login-template" style="display: none;">
+      <div class="popup popup__login">
+        <div class="popup__content">
+          <img class="popup__close-icon" src="<%=require('./images/popup_close-icon_white.svg')%>" alt="Иконка закрытия окна">
+          <h3 class="popup__title">Вход</h3>
+          <form class="form" name="login" novalidate>
+            <div class="form__field">
+              <label for="email-login" class="form__label"><span class="popup__colored-text">Email</span></label>
+              <input
+                class="form__input form__input_type_email"
+                type="email"
+                id="email-login"
+                name="email"
+                placeholder="Введите Email"
+                required
+                pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
+              >
+              <span id="email-login-error" class="form__error">Неправильный формат email</span>
+            </div>
+            <div class="form__field">
+              <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
+              <input
+                class="form__input form__input_type_password"
+                type="password"
+                id="password-login"
+                name="password"
+                placeholder="Введите пароль"
+                required
+                minlength="8"
+                pattern=".[^\s]{8,}"
+              >
+              <span id="password-login-error" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+            </div>
+            <div class="form__field"></div>
+            <button type="submit" name="button" class="form__button form__button_login" disabled>Войти</button>
+          </form>
+          <p class="popup__text">или
+            <span class="popup__link popup__colored-text">Зарегистрироваться</span>
+          </p>
+        </div>
       </div>
-    </div>
+    </template>
 
-    <div class="popup popup__successful-signup">
-      <div class="popup__content">
-        <img class="popup__close-icon" src="<%=require('./images/popup_close-icon_white.svg')%>" alt="Иконка закрытия окна">
-        <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
-        <p class="popup__text popup__text_left"><span class="popup__colored-text popup__link">Войти</span></p>
+    <template id="popup-signup-template" style="display: none;">
+      <div class="popup popup__signup">
+        <div class="popup__content">
+          <img class="popup__close-icon" src="<%=require('./images/popup_close-icon_white.svg')%>" alt="Иконка закрытия окна">
+          <h3 class="popup__title">Регистрация</h3>
+          <form class="form" name="signup" novalidate>
+            <div class="form__field">
+              <label for="email-signup" class="form__label"><span class="popup__colored-text">Email</span></label>
+              <input
+                class="form__input form__input_type_email"
+                type="email"
+                id="email-signup"
+                name="email"
+                placeholder="Введите Email"
+                pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
+                required
+              >
+              <span id="email-signup-error" class="form__error">Неправильный формат email</span>
+            </div>
+            <div class="form__field">
+              <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
+              <input
+                class="form__input form__input_type_password"
+                type="password"
+                id="password-signup"
+                name="password"
+                placeholder="Введите пароль"
+                minlength="8"
+                pattern=".[^\s]{8,}"
+                required
+              >
+              <span id="password-signup-error" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+            </div>
+            <div class="form__field">
+              <label for="name" class="form__label"><span class="popup__colored-text">Имя</span></label>
+              <input
+                class="form__input form__input_type_name"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Введите своё имя"
+                minlength="2"
+                maxlength="30"
+                pattern="^(?!-)(?!.*--)[А-ЯЁа-яёa-zA-z]+(-[А-ЯЁа-яёa-zA-Z]+)?"
+                required
+              >
+              <span id="name-error" class="form__error">Введите не менее 2 символов</span>
+            </div>
+            <div class="form__field">
+              <span id="already-exists-error" class="form__error form__error_centre">Такой пользователь уже есть</span>
+              <button type="submit" name="button" class="form__button form__button_activ" disabled>Зарегистрироваться</button>
+            </div>
+          </form>
+          <p class="popup__text">или <span class="popup__link popup__colored-text">Войти</span></p>
+        </div>
       </div>
-    </div>
+    </template>
+
+    <template id="popup-successful-signup-template" style="display: none;">
+      <div class="popup popup__successful-signup">
+        <div class="popup__content">
+          <img class="popup__close-icon" src="<%=require('./images/popup_close-icon_white.svg')%>" alt="Иконка закрытия окна">
+          <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
+          <p class="popup__text popup__text_left"><span class="popup__colored-text popup__link">Войти</span></p>
+        </div>
+      </div>
+    </template>
 
   </main>
   <footer class="footer">

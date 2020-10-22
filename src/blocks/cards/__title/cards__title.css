@@ -1,5 +1,9 @@
 .cards__title {
   margin-top: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
