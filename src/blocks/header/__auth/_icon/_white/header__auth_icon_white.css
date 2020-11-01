@@ -1,0 +1,20 @@
+.header__auth_icon_white {
+  padding-right: 40px;
+  position: relative;
+}
+
+.header__auth_icon_white::after {
+  position: absolute;
+  content: '';
+  width: 24px;
+  height: 24px;
+  right: 11px;
+  top: 6px;
+  background-image: url('../../../../../images/header_logout_white.png');
+}
+
+@media screen and (min-width: 1024px) {
+  .header__auth_icon_white::after {
+    top: 11px;
+  }
+}

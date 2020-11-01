@@ -4,15 +4,14 @@ export class Form {
     this._errorMessages = errorMessages;
   }
 
-  setServerError = () => {} //сделать alreadyExistsError: 'Такой пользователь уже есть',
-
-  _getInfo = () => {
-    return this._form.elements;
-  } //сделать
+  setServerError = (message) => {
+    const errorFromServer = this._form.querySelector('#auth-error');
+    errorFromServer.style.display = 'block';
+    errorFromServer.textContent = message;
+  }
 
   _setEventListeners = () => {
     this._form.addEventListener('input', this._validateInputElement, true);
-    //повесить слушатель на сабмит
   }
 
   initialization = () => {
@@ -57,7 +56,7 @@ export class Form {
   _isValidate = (input) => {
     input.setCustomValidity("");
     if (input.validity.valueMissing) {
-      input.setCustomValidity(this._errorMessages.empty); //не работает
+      input.setCustomValidity(this._errorMessages.empty);
       return false;
     }
 
@@ -76,10 +75,6 @@ export class Form {
       return false;
     }
     return input.checkValidity();
-  }
-
-  clear = () => {
-    this._error.forEach(item => item.textContent = '') // _clear — вспомогательный метод, очищает поля формы???
   }
 }
 

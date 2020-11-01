@@ -1,26 +1,22 @@
-// const imgSrc = require('../../images/header_logout_white.png');
-
 export class Header {
-  constructor(){}
+
+  constructor(iconColor) {
+    this.iconColor = iconColor;
+  }
 
   render = (isLoggedIn, userName) => {
     this._navigationItemArticles = document.querySelector('.navigation__item_articles');
-
-    this._buttonIcon = document.querySelector('.header__icon');
     this._button = document.querySelector('.header__auth');
     this._button.textContent = userName;
-    if(isLoggedIn == true) {
 
-      // this._buttonIcon.style.display = 'block';
+    if (isLoggedIn == true) {
+      this._button.classList.add(this.iconColor);
       this._navigationItemArticles.style.display = 'block';
-
-
     } else {
       this._navigationItemArticles.style.display = 'none';
-      // this._buttonIcon.style.display = 'none';
+      this._button.classList.remove(this.iconColor);
     }
   }
-
 }
 
 // render при вызове перерисовывает шапку в зависимости от переданного аргумента — объекта props. У этого объекта есть два обязательных свойства:

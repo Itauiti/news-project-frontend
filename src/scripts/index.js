@@ -7,41 +7,40 @@ import { NewsCard } from './components/NewsCard';
 import { NewsCardList } from './components/NewsCardList';
 
 import { headerBurger, resultsContainer, formSearch, headerAuthButton } from './constants/domConstants';
-import { errorMessages, optionsForApi, openedClassPopup, popupLogin, popupSignup, popupSuccessfulSignup, mediaQueryList} from './constants/constants';
+import { errorMessages, optionsForApi, openedClassPopup, popupLogin, popupSignup, popupSuccessfulSignup, mediaQueryList, iconColorWhite } from './constants/constants';
 import { getDateAgoToRef, currentDateToRef, changeDateFormat, changeMonthFormat } from './utils/dateFunctions';
 import { openCloseHeaderBurger, showHeaderBurger, hideHeaderBurger, screenTestForHeaderBurger } from './utils/headerBurgerFunctions';
 
 import "../styles/index.css";
 
-
 const mainApi = new MainApi(optionsForApi);
 const newsApi = new NewsApi();
 const popup = new Popup(openedClassPopup, showHeaderBurger, hideHeaderBurger);
-const headerr = new Header();
+const header = new Header(iconColorWhite);
 
-//?????????????????????
-const imgSrc = require('../images/header_logout_white.png');
 
 //Рендер авторизованной/неавторизованной шапки страницы
 mainApi.getUserData()
 .then((data) => {
-  if (data === undefined) {
-    headerr.render(false, 'Авторизоваться');
-
-    headerAuthButton.addEventListener('click', openSigninPopup);
-  } else {
-    headerr.render(true, data[0].name);
-    headerAuthButton.removeEventListener('click', openSigninPopup);
-    headerAuthButton.addEventListener('click', () => {
-      mainApi.logoutUser().then(() => {
-        headerr.render(false, 'Авторизоваться');
-      })
-    });
-  }
-  console.log(data);
+console.log(data);
+  header.render(true, data[0].name);
+  headerAuthButton.addEventListener('click', logout);
+})
+.catch(() => {
+  header.render(false, 'Авторизоваться');
+  headerAuthButton.addEventListener('click', openSigninPopup);
 });
 
-//Листнеры
+const logout = function() {
+  mainApi.logoutUser()
+  .then(() => {
+    header.render(false, 'Авторизоваться');
+    headerAuthButton.removeEventListener('click', logout);
+    headerAuthButton.addEventListener('click', openSigninPopup);
+  })
+  .catch(err => console.log(err.message));
+}
+
 window.addEventListener('keyup', function (event) {
   if (event.key === 'Escape' || event.key === 'Esc' || event.key === 27) {
     popup.close();
@@ -84,7 +83,6 @@ formSearch.addEventListener('submit', (event) => {
   );
 });
 
-
 const openSigninPopup = function() {
   popup.setContent(popupLogin);
   popup.setLinkListener(openSignupPopup);
@@ -100,17 +98,14 @@ const openSigninPopup = function() {
     };
     mainApi.signin(data.email, data.password)
     .then((data) => {
-        headerr.render(true, data.name);
-        headerAuthButton.removeEventListener('click', openSigninPopup);
-        headerAuthButton.addEventListener('click', () => {
-          mainApi.logoutUser().then(() => {
-            headerr.render(false, 'Авторизоваться');
-            headerAuthButton.addEventListener('click', openSigninPopup);
-          })
-        });
-        popup.close();
+      header.render(true, data.name);
+      headerAuthButton.removeEventListener('click', openSigninPopup);
+      headerAuthButton.addEventListener('click', logout);
+      popup.close();
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      formLoginClass.setServerError(err.message);
+    });
   });
 };
 
@@ -130,13 +125,12 @@ const openSignupPopup = function() {
     };
     mainApi.signup(data.name, data.email, data.password)
     .then(() => {
-      // if (res.status === '409') {
-
-      // }
       popup.close();
       openSuccessfulSignupPopup();
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      formSignupClass.setServerError(err.message);
+    });
   });
 };
 

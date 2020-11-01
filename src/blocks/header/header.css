@@ -1,18 +1,19 @@
 @import url(./__container/header__container.css);
 @import url(./__auth/header__auth.css);
 @import url(./__logo/header__logo.css);
-@import url(./__icon/header__icon.css);
 @import url(./_line/_black/header__line_black.css);
 @import url(./_line/_white/header__line_white.css);
 @import url(./_dark/header_dark.css);
 @import url(./__nav-container/header__nav-container.css);
-@import url(./__icon/_activ/header__icon_activ.css);
 @import url(./__menu/header__menu.css);
 @import url(./__menu/_close/_white/header__menu_close_white.css);
 @import url(./__menu/_open/_white/header__menu_open_white.css);
 @import url(./__menu/_open/_black/header__menu_open_black.css);
 @import url(./__menu/_close/_black/header__menu_close_black.css);
 @import url(./__nav-container/_activ/header__nav-container_activ.css);
+@import url(./__auth/_icon/_white/header__auth_icon_white.css);
+@import url(./__auth/_icon/_black/header__auth_icon_black.css);
+
 
 .header {
   z-index: 2;

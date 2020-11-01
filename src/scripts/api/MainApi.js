@@ -16,12 +16,12 @@ export class MainApi {
       })
     })
     .then(res => {
+      let json = res.json();
       if (res.ok) {
-        return res.json();
+        return json;
       }
-      return Promise.reject("Ошибка HTTP: " + res.status);
+      return json.then(err => { throw err; });
     })
-    .catch(err => console.log(err));
   }
 
   signin(email, password) {
@@ -35,12 +35,12 @@ export class MainApi {
       })
     })
     .then(res => {
+      let json = res.json();
       if (res.ok) {
-        return res.json();
+        return json;
       }
-      return Promise.reject("Ошибка HTTP: " + res.status);
+      return json.then(err => { throw err; });
     })
-    .catch(err => console.log(err));
   }
 
   getUserData() {
@@ -49,12 +49,12 @@ export class MainApi {
       credentials: 'include',
     })
     .then(res => {
+      let json = res.json();
       if (res.ok) {
-        return res.json();
+        return json;
       }
-      return Promise.reject("Ошибка HTTP: " + res.status);
+      return json.then(err => { throw err; });
     })
-    .catch(err => console.log(err));
   }
 
   logoutUser() {
@@ -64,12 +64,12 @@ export class MainApi {
       credentials: 'include',
     })
     .then(res => {
+      let json = res.json();
       if (res.ok) {
-        return res.json();
+        return json;
       }
-      return Promise.reject("Ошибка HTTP: " + res.status);
+      return json.then(err => { throw err; });
     })
-    .catch(err => console.log(err));
   }
 
   getArticles() {
@@ -78,12 +78,12 @@ export class MainApi {
       credentials: 'include',
     })
     .then(res => {
+      let json = res.json();
       if (res.ok) {
-        return res.json();
+        return json;
       }
-      return Promise.reject("Ошибка HTTP: " + res.status);
+      return json.then(err => { throw err; });
     })
-    .catch(err => console.log(err));
   }
 
   createArticle(keyword, title, text, date, source, link, image ) {
@@ -102,12 +102,12 @@ export class MainApi {
       })
     })
     .then(res => {
+      let json = res.json();
       if (res.ok) {
-        return res.json();
+        return json;
       }
-      return Promise.reject("Ошибка HTTP: " + res.status);
+      return json.then(err => { throw err; });
     })
-    .catch(err => console.log(err));
   }
 
   removeArticle(articleId) {
@@ -120,11 +120,11 @@ export class MainApi {
       })
     })
     .then(res => {
+      let json = res.json();
       if (res.ok) {
-        return res.json();
+        return json;
       }
-      return Promise.reject("Ошибка HTTP: " + res.status);
+      return json.then(err => { throw err; });
     })
-    .catch(err => console.log(err));
   }
 }
