@@ -23,39 +23,44 @@ export class NewsCard {
     this._icon = this._view.querySelector('.cards__icon');
     this._message = this._view.querySelector('.cards__message');
     this._link = this._cardsData.url;
-    this.renderIcon();
+    // this.renderIcon();
     return this._view;
   }
-
-  renderIcon = () => {
-    this._icon.classList.add('cards__icon_bookmark');
-    let isLoggedIn = true;
-    if(isLoggedIn === true) {
-      this._icon.addEventListener('click', () => {
-        if (!this._icon.classList.contains('cards__icon_bookmark_activ')) {
-          this._mainApi.createArticle(this._keyword, this._title.textContent, this._text.textContent, this._date.textContent, this._source.textContent, this._link, this._image.src)
-          .then((res) => {
-            // console.log(res._id);
-            // console.log(res);
-            this._icon.classList.add('cards__icon_bookmark_activ');
-            // console.log(this._icon);
-            this._icon._id = res._id;
-            }
-          )
-        } else {
-          this._mainApi.removeArticle(this._icon._id)
-          .then(() => {
-            // console.log(res);
-            this._icon.classList.remove('cards__icon_bookmark_activ');
-            // console.log(this._icon);
-          })
+  _loggedIn = () => {
+    if (!this._icon.classList.contains('cards__icon_bookmark_activ')) {
+      this._mainApi.createArticle(this._keyword, this._title.textContent, this._text.textContent, this._date.textContent, this._source.textContent, this._link, this._image.src)
+      .then((res) => {
+        // console.log(res._id);
+        // console.log(res);
+        this._icon.classList.add('cards__icon_bookmark_activ');
+        // console.log(this._icon);
+        this._icon._id = res._id;
         }
-      }, true);
+      )
     } else {
-      this._icon.addEventListener('click', () => {
-        this._message.classList.add('cards__message_activ');
-        setTimeout(() => this._message.classList.remove('cards__message_activ'), 1000);
+      this._mainApi.removeArticle(this._icon._id)
+      .then(() => {
+        // console.log(res);
+        this._icon.classList.remove('cards__icon_bookmark_activ');
+        // console.log(this._icon);
       })
+    }
+  }
+
+  _notLogged = () => {
+    this._message.classList.add('cards__message_activ');
+    setTimeout(() => this._message.classList.remove('cards__message_activ'), 1000);
+  }
+
+  renderIcon = (isLoggedIn) => {
+    this._icon.classList.add('cards__icon_bookmark');
+    // let isLoggedIn = true;
+    if(isLoggedIn === true) {
+      this._icon.removeEventListener('click', this._notLogged);
+      this._icon.addEventListener('click', this._loggedIn);
+    } else {
+      this._icon.removeEventListener('click', this._loggedIn);
+      this._icon.addEventListener('click', this._notLogged);
     }
   }
 

@@ -18,13 +18,12 @@ const newsApi = new NewsApi();
 const popup = new Popup(openedClassPopup, showHeaderBurger, hideHeaderBurger);
 const header = new Header(iconColorWhite);
 
-
 //Рендер авторизованной/неавторизованной шапки страницы
 mainApi.getUserData()
 .then((data) => {
-console.log(data);
   header.render(true, data[0].name);
   headerAuthButton.addEventListener('click', logout);
+  localStorage.setItem('username', 'авторизовано');
 })
 .catch(() => {
   header.render(false, 'Авторизоваться');
@@ -37,6 +36,11 @@ const logout = function() {
     header.render(false, 'Авторизоваться');
     headerAuthButton.removeEventListener('click', logout);
     headerAuthButton.addEventListener('click', openSigninPopup);
+    localStorage.removeItem('username');
+    // while (resultsContainer.firstChild) {
+    //   resultsContainer.removeChild(resultsContainer.firstChild);
+    // };
+    location = './';
   })
   .catch(err => console.log(err.message));
 }
@@ -68,8 +72,13 @@ formSearch.addEventListener('submit', (event) => {
       newsCardList.renderNotFoundNews('Ничего не найдено','К сожалению по вашему запросу ничего не найдено.');
     } else {
       res.articles.forEach(item => {
-        const newsCard = new NewsCard(item, data.keyword, mainApi)
+        const newsCard = new NewsCard(item, data.keyword, mainApi);
         const x = newsCard.createCard(changeDateFormat, changeMonthFormat);
+        if (localStorage.getItem('username') === null) {
+          newsCard.renderIcon(false);
+        } else {
+          newsCard.renderIcon(true);
+        }
         newsCardList.addCard(x);
       })
       newsCardList.clearNewsCardList();
@@ -101,7 +110,11 @@ const openSigninPopup = function() {
       header.render(true, data.name);
       headerAuthButton.removeEventListener('click', openSigninPopup);
       headerAuthButton.addEventListener('click', logout);
+      localStorage.setItem('username', 'авторизовано');
       popup.close();
+      while (resultsContainer.firstChild) {
+        resultsContainer.removeChild(resultsContainer.firstChild);
+      }
     })
     .catch(err => {
       formLoginClass.setServerError(err.message);

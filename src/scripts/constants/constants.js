@@ -18,6 +18,7 @@ const popupLogin = '#popup-login-template';
 const popupSignup = '#popup-signup-template';
 const popupSuccessfulSignup = '#popup-successful-signup-template';
 const iconColorWhite = 'header__auth_icon_white';
+const iconColorBlack = 'header__auth_icon_black';
 
 const mediaQueryList = window.matchMedia('(max-width: 629px)');
 // url: 'https://api.newsforyouproject.ru'
@@ -30,5 +31,6 @@ export {
   popupSignup,
   popupSuccessfulSignup,
   mediaQueryList,
-  iconColorWhite
+  iconColorWhite,
+  iconColorBlack,
 };
