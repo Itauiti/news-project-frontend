@@ -55,12 +55,6 @@ window.addEventListener('keyup', (event) => {
   }
 });
 
-window.addEventListener('click', (event) => {
-  if (event.target.classList.contains(popupClassLists.openedClassPopup)) {
-    popup.close();
-  }
-});
-
 mediaQueryList.addListener(burger.screenTestForHeaderBurger);
 
 headerBurger.addEventListener('click', () => {
@@ -133,7 +127,6 @@ const openSigninPopup = function() {
       headerAuthButton.removeEventListener('click', openSigninPopup);
       headerAuthButton.addEventListener('click', logout);
       localStorage.setItem('username', data.name);
-      console.log(localStorage.getItem('username'));
       popup.close();
       while (resultsContainer.firstChild) {
         resultsContainer.removeChild(resultsContainer.firstChild);

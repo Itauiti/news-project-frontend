@@ -7,7 +7,7 @@ export class NewsCard {
     this._cardsData = cardsData;
   }
 
-  createCard = (item) => {
+  createCard = () => {
     this._view = NewsCard._template.cloneNode(true).children[0];
     this._card = this._view.querySelector('.cards__item');
     this._date = this._view.querySelector('.cards__date');
