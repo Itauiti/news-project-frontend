@@ -29,7 +29,7 @@
               </li>
             </ul>
           </nav>
-          <div class="header__auth white-text">Авторизоваться</div>
+          <div class="header__auth white-text"><p class="header__auth_text">Авторизоваться</p></div>
         </div>
       </div>
     </header>
@@ -85,6 +85,7 @@
     <template id="cards-item-template" style="display: none;">
       <div class="cards__item">
         <img class="cards__image" src="<%=require('./images/card_1.jpg')%>" alt="Фото из статьи">
+        <div class="cards__label"></div>
         <div class="cards__message">Войдите, чтобы сохранять статьи</div>
         <div class="cards__icon"></div>
         <div class="cards__text-container">
@@ -96,9 +97,10 @@
               складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
             </p>
           </div>
-          <p class="cards__sourse">Лента.ру</p>
+          <p class="cards__source">Лента.ру</p>
         </div>
-      </div></template>
+      </div>
+    </template>
 
     <section class="about">
       <div class="about__container container">

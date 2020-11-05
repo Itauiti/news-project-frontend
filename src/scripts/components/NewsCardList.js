@@ -6,8 +6,6 @@ export class NewsCardList {
     this._container = container;
     this._view = NewsCardList._template.cloneNode(true).children[0];
     this._cards = this._view.querySelector('.cards');
-    this._button = this._view.querySelector('.results__button');
-    this.showMore();
     this._cardArr = [];
     this._loadingItem = null;
   }
@@ -17,8 +15,7 @@ export class NewsCardList {
     return this._cardArr;
   }
 
-  renderResults = () => {
-
+  renderCardsInParts = () => {
     if (this._cardArr.length > 3) {
       for (let i = 0; i < 3; i++) {
         this._cards.appendChild(this._cardArr[i]);
@@ -33,6 +30,11 @@ export class NewsCardList {
       this._cardArr.splice(0, 3);
       this._container.appendChild(this._view);
     }
+  }
+
+  renderAllCards = () => {
+    this._cardArr.forEach(item => this._cards.appendChild(item));
+    this._container.appendChild(this._view);
   }
 
   renderLoader = () => {
@@ -55,7 +57,7 @@ export class NewsCardList {
     this._container.appendChild(this._loadingItem);
   }
 
-  renderNotFoundNews = (titleText, message) => {
+  renderError = (titleText, message) => {
     const loadingItem = document.createElement('div');
     const container = document.createElement('div');
     const image = document.createElement('img');
@@ -80,11 +82,10 @@ export class NewsCardList {
     this._container.appendChild(this._loadingItem);
   }
 
-  renderError = () => {}
-
   showMore = () => {
+    this._button = this._view.querySelector('.results__button');
     this._button.addEventListener('click', () => {
-      this.renderResults();
+      this.renderCardsInParts();
     })
   }
 
@@ -92,10 +93,3 @@ export class NewsCardList {
     this._container.removeChild(this._loadingItem);
   }
 }
-
-
-// renderResults принимает массив экземпляров карточек и отрисовывает их;
-// renderLoader отвечает за отрисовку лоудера;
-// renderError принимает объект ошибки и показывает ошибку в интерфейсе;
-// showMore отвечает за функциональность кнопки «Показать ещё»;
-// addCard принимает экземпляр карточки и добавляет её в список.

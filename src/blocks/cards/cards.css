@@ -3,7 +3,7 @@
 @import url(./__item/cards__item.css);
 @import url(./__label/cards__label.css);
 @import url(./__message/cards__message.css);
-@import url(./__sourse/cards__sourse.css);
+@import url(./__source/cards__source.css);
 @import url(./__text/cards__text.css);
 @import url(./__title/cards__title.css);
 @import url(./__date/cards__date.css);
@@ -13,6 +13,7 @@
 @import url(./__icon/_bookmark/_activ/cards__icon_bookmark_activ.css);
 @import url(./__icon/_trash/cards__icon_trash.css);
 @import url(./__message/_news/cards__message_news.css);
+@import url(./__label/_activ/cards__label_activ.css);
 
 .cards {
   display: grid;

@@ -3,7 +3,8 @@
 @import url(./__logo/header__logo.css);
 @import url(./_line/_black/header__line_black.css);
 @import url(./_line/_white/header__line_white.css);
-@import url(./_dark/header_dark.css);
+@import url(./__background/_dark/header__background_dark.css);
+@import url(./__background/_white/header__background_white.css);
 @import url(./__nav-container/header__nav-container.css);
 @import url(./__menu/header__menu.css);
 @import url(./__menu/_close/_white/header__menu_close_white.css);

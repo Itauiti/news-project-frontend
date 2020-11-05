@@ -1,11 +1,12 @@
 export class Form {
-  constructor(form, errorMessages) {
+  constructor(form, formClassLists, errorMessages) {
     this._form = form;
     this._errorMessages = errorMessages;
+    this._formClassLists = formClassLists;
   }
 
   setServerError = (message) => {
-    const errorFromServer = this._form.querySelector('#auth-error');
+    const errorFromServer = this._form.querySelector(this._formClassLists.serverErrorClass);
     errorFromServer.style.display = 'block';
     errorFromServer.textContent = message;
   }
@@ -16,20 +17,21 @@ export class Form {
 
   initialization = () => {
     this._setEventListeners();
-    const error = this._form.querySelectorAll('.form__error');
+
+    const error = this._form.querySelectorAll(this._formClassLists.errorClass);
     this._error = error;
-    this._inputs = Array.from(this._form.querySelectorAll('.form__input'));
-    const submit = this._form.querySelector('.form__button');
+    this._inputs = Array.from(this._form.querySelectorAll(this._formClassLists.inputClass));
+    const submit = this._form.querySelector(this._formClassLists.buttonClass);
     this._submit = submit;
   }
 
   _setSubmitButtonState = (state) => {
     if (state) {
       this._submit.removeAttribute('disabled');
-      this._submit.classList.add('form__button_activ');
+      this._submit.classList.add(this._formClassLists.activButtonClass);
     } else {
       this._submit.setAttribute('disabled', true);
-      this._submit.classList.remove('form__button_activ');
+      this._submit.classList.remove(this._formClassLists.activButtonClass);
     }
   }
 
@@ -55,7 +57,7 @@ export class Form {
 
   _isValidate = (input) => {
     input.setCustomValidity("");
-    if (input.validity.valueMissing) {
+    if (input.type === 'text' && input.validity.valueMissing) {
       input.setCustomValidity(this._errorMessages.empty);
       return false;
     }
@@ -77,9 +79,3 @@ export class Form {
     return input.checkValidity();
   }
 }
-
-// setServerError — добавляет форме ошибку, пришедшую с сервера;
-// _validateInputElement — валидирует переданный в качестве аргумента инпут;
-// _validateForm — валидирует всю форму;
-// _clear — вспомогательный метод, очищает поля формы;
-// _getInfo — вспомогательный метод, возвращает данные формы.

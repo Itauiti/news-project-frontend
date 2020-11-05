@@ -1,5 +1,5 @@
 .header__auth_icon_black {
-  padding-right: 40px;
+  padding-right: 26px;
   position: relative;
 }
 
@@ -8,13 +8,7 @@
   content: '';
   width: 24px;
   height: 24px;
-  right: 12px;
-  top: 7px;
+  right: 0px;
+  top: -1px;
   background-image: url('../../../../../images/header_logout_black.png');
-}
-
-@media screen and (min-width: 1024px) {
-  .header__auth_icon_black::after {
-    top: 11px;
-  }
 }

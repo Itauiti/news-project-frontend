@@ -12,7 +12,8 @@
   text-decoration: none;
   transition: opacity 0.3s linear;
   cursor: pointer;
-  min-height: 56px;
+  height: 40px;
+  height: 56px;
 }
 
 .header__auth:hover {
@@ -25,7 +26,7 @@
 
 @media screen and (min-width: 630px) {
   .header__auth {
-    min-height: 40px;
+    height: 40px;
     font-size: 16px;
   }
 }
@@ -39,7 +40,7 @@
 @media screen and (min-width: 1024px) {
   .header__auth {
     padding: 11px 15px 11px;
-    min-height: 48px;
+    height: 48px;
     font-size: 18px;
   }
 }

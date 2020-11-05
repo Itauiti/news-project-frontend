@@ -5,56 +5,69 @@ import { MainApi } from './api/MainApi.js';
 import { NewsApi } from './api/NewsApi.js';
 import { NewsCard } from './components/NewsCard';
 import { NewsCardList } from './components/NewsCardList';
+import { Burger } from './components/Burger';
 
 import { headerBurger, resultsContainer, formSearch, headerAuthButton } from './constants/domConstants';
-import { errorMessages, optionsForApi, openedClassPopup, popupLogin, popupSignup, popupSuccessfulSignup, mediaQueryList, iconColorWhite } from './constants/constants';
 import { getDateAgoToRef, currentDateToRef, changeDateFormat, changeMonthFormat } from './utils/dateFunctions';
-import { openCloseHeaderBurger, showHeaderBurger, hideHeaderBurger, screenTestForHeaderBurger } from './utils/headerBurgerFunctions';
+import {
+  errorMessages, popupFormClassLists, optionsForMainApi, optionsForNewsApi, popupClassLists, headerClassLists, mediaQueryList,
+  notLoggedHeaderText, nothingFoundTitle, nothingFoundText, errorNewsApiTitle, errorNewsApiText
+} from './constants/constants';
 
 import "../styles/index.css";
 
-const mainApi = new MainApi(optionsForApi);
-const newsApi = new NewsApi();
-const popup = new Popup(openedClassPopup, showHeaderBurger, hideHeaderBurger);
-const header = new Header(iconColorWhite);
+const mainApi = new MainApi(optionsForMainApi);
+const newsApi = new NewsApi(optionsForNewsApi);
+const header = new Header(headerClassLists.iconColorWhite);
+const burger = new Burger(headerClassLists.headerBackgroundColorDark);
+const popup = new Popup(popupClassLists.openedClassPopup, burger);
 
 //Рендер авторизованной/неавторизованной шапки страницы
 mainApi.getUserData()
 .then((data) => {
   header.render(true, data[0].name);
   headerAuthButton.addEventListener('click', logout);
-  localStorage.setItem('username', 'авторизовано');
+  localStorage.setItem('username', data[0].name);
 })
 .catch(() => {
-  header.render(false, 'Авторизоваться');
+  header.render(false, notLoggedHeaderText);
   headerAuthButton.addEventListener('click', openSigninPopup);
 });
 
 const logout = function() {
   mainApi.logoutUser()
   .then(() => {
-    header.render(false, 'Авторизоваться');
+    header.render(false, notLoggedHeaderText);
+    location = './';
     headerAuthButton.removeEventListener('click', logout);
     headerAuthButton.addEventListener('click', openSigninPopup);
     localStorage.removeItem('username');
     // while (resultsContainer.firstChild) {
     //   resultsContainer.removeChild(resultsContainer.firstChild);
     // };
-    location = './';
   })
-  .catch(err => console.log(err.message));
+  .catch(err => console.log(err.message));//подумать над выводом ошибок, отдельную страницу?
 }
 
-window.addEventListener('keyup', function (event) {
+window.addEventListener('keyup', (event) => {
   if (event.key === 'Escape' || event.key === 'Esc' || event.key === 27) {
     popup.close();
   }
 });
 
-mediaQueryList.addListener(screenTestForHeaderBurger);
+window.addEventListener('click', (event) => {
+  if (event.target.classList.contains(popupClassLists.openedClassPopup)) {
+    popup.close();
+  }
+});
 
-headerBurger.addEventListener('click', openCloseHeaderBurger);
+mediaQueryList.addListener(burger.screenTestForHeaderBurger);
 
+headerBurger.addEventListener('click', () => {
+  burger.openCloseHeaderBurger();
+});
+
+//formSearch подумать
 formSearch.addEventListener('submit', (event) => {
   event.preventDefault();
   while (resultsContainer.firstChild) {
@@ -69,35 +82,44 @@ formSearch.addEventListener('submit', (event) => {
   .then(res => {
     if (res.articles.length === 0) {
       newsCardList.clearNewsCardList();
-      newsCardList.renderNotFoundNews('Ничего не найдено','К сожалению по вашему запросу ничего не найдено.');
+      newsCardList.renderError(nothingFoundTitle, nothingFoundText);
     } else {
       res.articles.forEach(item => {
-        const newsCard = new NewsCard(item, data.keyword, mainApi);
-        const x = newsCard.createCard(changeDateFormat, changeMonthFormat);
+        const cardsData = {
+          date: changeDateFormat(item.publishedAt.slice(0, 10), changeMonthFormat),
+          image: item.urlToImage || 'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+          keyword: data.keyword,
+          link: item.url,
+          source: item.source.name || 'no text',
+          title: item.title,
+          text: item.description || 'no text',
+        };
+        const newsCard = new NewsCard(cardsData, mainApi);
+        const createdCard = newsCard.createCard();
         if (localStorage.getItem('username') === null) {
           newsCard.renderIcon(false);
         } else {
           newsCard.renderIcon(true);
         }
-        newsCardList.addCard(x);
+        newsCardList.addCard(createdCard);
       })
       newsCardList.clearNewsCardList();
-      newsCardList.renderResults();
+      newsCardList.renderCardsInParts();
+      newsCardList.showMore();
     }
   })
   .catch((err) => {
     newsCardList.clearNewsCardList();
-    newsCardList.renderNotFoundNews(`Ошибка HTTP: ${err}`, 'Что-то пошло не так');
+    newsCardList.renderError(`${errorNewsApiTitle}: ${err}`, errorNewsApiText);
     }
   );
 });
 
 const openSigninPopup = function() {
-  popup.setContent(popupLogin);
-  popup.setLinkListener(openSignupPopup);
+  popup.setContent(popupClassLists.popupLogin, openSignupPopup);
   popup.open();
   const formLogin = document.forms.login;
-  const formLoginClass = new Form(formLogin, errorMessages);
+  const formLoginClass = new Form(formLogin, popupFormClassLists, errorMessages);
   formLoginClass.initialization();
   formLogin.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -110,7 +132,8 @@ const openSigninPopup = function() {
       header.render(true, data.name);
       headerAuthButton.removeEventListener('click', openSigninPopup);
       headerAuthButton.addEventListener('click', logout);
-      localStorage.setItem('username', 'авторизовано');
+      localStorage.setItem('username', data.name);
+      console.log(localStorage.getItem('username'));
       popup.close();
       while (resultsContainer.firstChild) {
         resultsContainer.removeChild(resultsContainer.firstChild);
@@ -123,11 +146,10 @@ const openSigninPopup = function() {
 };
 
 const openSignupPopup = function() {
-  popup.setContent(popupSignup);
-  popup.setLinkListener(openSigninPopup);
+  popup.setContent(popupClassLists.popupSignup, openSigninPopup);
   popup.open();
   const formSignup = document.forms.signup;
-  const formSignupClass = new Form(formSignup, errorMessages);
+  const formSignupClass = new Form(formSignup, popupFormClassLists, errorMessages);
   formSignupClass.initialization();
   formSignup.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -148,8 +170,7 @@ const openSignupPopup = function() {
 };
 
 const openSuccessfulSignupPopup = function() {
-  popup.setContent(popupSuccessfulSignup);
-  popup.setLinkListener(openSigninPopup);
+  popup.setContent(popupClassLists.popupSuccessfulSignup, openSigninPopup);
   popup.open();
 };
 
