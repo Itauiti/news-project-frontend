@@ -10,7 +10,7 @@
   <meta name="author" content="Irina Isaeva">
   <link rel="icon" href="./images/favicon.svg" type="image/ico">
   <title>Новости</title>
-  <link rel="stylesheet" href="./styles/news.c8ef0947c0b0362a6f6b.css">
+  <link rel="stylesheet" href="./styles/news.8314255540879a2d343d.css">
 </head>
 
 <body class="body">
@@ -23,212 +23,61 @@
           <nav class="navigation">
             <ul class="navigation__container">
               <li class="navigation__item">
-                <a class="navigation__link navigation__link_activ" href="index.html">Главная</a>
+                <a class="navigation__link" href="index.html">Главная</a>
               </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="news.html">Сохраненные статьи</a>
+              <li class="navigation__item navigation__item_articles">
+                <a class="navigation__link navigation__link_activ" href="news.html">Сохраненные статьи</a>
               </li>
             </ul>
           </nav>
-          <button class="header__auth">Большая-Двойная
-            <img class="header__icon header__icon_activ" src="./images/header_logout_black.png" alt="Иконка выхода из аккаунта">
-          </button>
+          <div class="header__auth"><p class="header__auth_text"></p></div>
         </div>
       </div>
     </header>
     <section class="user-info">
       <div class="user-info__container container">
         <p class="user-info__subtitle">Сохранённые статьи</p>
-        <h1 class="title title_size_medium">Грета, у вас 5 сохранённых статей</h1>
+        <h1 class="user-info__title title title_size_medium"></h1>
         <p class="user-info__text">
-          По ключевым словам: <span class="user-info__text user-info__text_bold" >Природа,</span>
-          <span class="user-info__text user-info__text_bold">Тайга</span>
-          и <span class="user-info__text user-info__text_bold">2-м другим</span>
+          По ключевым словам: <span class="user-info__text user-info__text_word_1 user-info__text_bold" ></span>
+          <span class="user-info__text user-info__text_word_2 user-info__text_bold"></span><span class="user-info__text user-info__text_word_3">и <span class="user-info__text user-info__text_word_4 user-info__text_bold"></span></span>
+
         </p>
       </div>
     </section>
   </div>
 
   <main class="main">
-    <section class="results">
+    <section class="results"></section>
+    <template id="results-template" style="display: none;">
+
       <div class="results__container container">
         <div class="cards">
-          <div class="cards__item">
-            <img class="cards__image" src="./images/card_1.jpg" alt="Фото из статьи">
-            <div class="cards__label">Природа</div>
-            <div class="cards__message cards__message_news">Убрать из сохранённых</div>
-            <div class="cards__icon cards__icon_trash"></div>
-            <div class="cards__text-container">
-              <div>
-                <p class="cards__date">2 августа, 2019</p>
-                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
-                <p class="cards__text">
-                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
-                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-                </p>
-              </div>
-              <p class="cards__sourse">Лента.ру</p>
-            </div>
-          </div>
-          <div class="cards__item">
-            <img class="cards__image" src="./images/card_1.jpg" alt="Фото из статьи">
-            <div class="cards__label">Природа</div>
-            <div class="cards__message cards__message_news cards__message_activ">Убрать из сохранённых</div>
-            <div class="cards__icon cards__icon_trash"></div>
-            <div class="cards__text-container">
-              <div>
-                <p class="cards__date">2 августа, 2019</p>
-                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
-                <p class="cards__text">
-                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
-                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-                </p>
-              </div>
-              <p class="cards__sourse">Лента.ру</p>
-            </div>
-          </div>
-          <div class="cards__item">
-            <img class="cards__image" src="./images/card_1.jpg" alt="Фото из статьи">
-            <div class="cards__label">Природа</div>
-            <div class="cards__message cards__message_news">Убрать из сохранённых</div>
-            <div class="cards__icon cards__icon_trash"></div>
-            <div class="cards__text-container">
-              <div>
-                <p class="cards__date">2 августа, 2019</p>
-                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
-                <p class="cards__text">
-                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
-                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-                </p>
-              </div>
-              <p class="cards__sourse">Лента.ру</p>
-            </div>
-          </div>
-          <div class="cards__item">
-            <img class="cards__image" src="./images/card_1.jpg" alt="Фото из статьи">
-            <div class="cards__label">Природа</div>
-            <div class="cards__message cards__message_news">Убрать из сохранённых</div>
-            <div class="cards__icon cards__icon_trash"></div>
-            <div class="cards__text-container">
-              <div>
-                <p class="cards__date">2 августа, 2019</p>
-                <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
-                <p class="cards__text">
-                  В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
-                  складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-                </p>
-              </div>
-              <p class="cards__sourse">Лента.ру</p>
-            </div>
-          </div>
+
         </div>
       </div>
-    </section>
-    <!-- для открытия попапов добавить popup_is-opened к popup -->
-    <div class="popup popup__login">
-      <div class="popup__content">
-        <img class="popup__close-icon" src="./images/popup_close-icon_white.svg" alt="Иконка закрытия окна">
-        <h3 class="popup__title">Вход</h3>
-        <form class="form" name="login" novalidate>
-          <div class="form__field">
-            <label for="email" class="form__label"><span class="popup__colored-text">Email</span></label>
-            <input
-              class="form__input form__input_type_email"
-              type="text"
-              id="email-login"
-              name="email-login"
-              placeholder="Введите Email"
-              required
-              pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
-            >
-            <span id="email-error-login" class="form__error">Неправильный формат email</span>
-          </div>
-          <div class="form__field">
-            <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
-            <input
-              class="form__input form__input_type_password"
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Введите пароль"
-              required
-              minlength="8"
-              pattern=".[^\s]{8,}"
-            >
-            <span id="password-error-login" class="form__error">Введите не менее 8 символов (без пробелов)</span>
-          </div>
-          <div class="form__field"></div>
-          <button type="submit" name="button" class="form__button ">Войти</button>
-        </form>
-        <p class="popup__text">или
-          <span class="popup__link popup__colored-text">Зарегистрироваться</span>
-        </p>
-      </div>
-    </div>
 
-    <div class="popup popup__signup">
-      <div class="popup__content">
-        <img class="popup__close-icon" src="./images/popup_close-icon_white.svg" alt="Иконка закрытия окна">
-        <h3 class="popup__title">Регистрация</h3>
-        <form class="form" name="signup" novalidate>
-          <div class="form__field">
-            <label for="email" class="form__label"><span class="popup__colored-text">Email</span></label>
-            <input
-              class="form__input form__input_type_email"
-              type="text"
-              id="email-signup"
-              name="email-signup"
-              placeholder="Введите Email"
-              required
-              pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
-            >
-            <span id="email-error-signup" class="form__error">Неправильный формат email</span>
-          </div>
-          <div class="form__field">
-            <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
-            <input
-              class="form__input form__input_type_password"
-              type="password"
-              id="password-signup"
-              name="password-signup"
-              placeholder="Введите пароль"
-              required
-              minlength="8"
-              pattern=".[^\s]{8,}"
-            >
-            <span id="password-error-signup" class="form__error">Введите не менее 8 символов (без пробелов)</span>
-          </div>
-          <div class="form__field">
-            <label for="name" class="form__label"><span class="popup__colored-text">Имя</span></label>
-            <input
-              class="form__input form__input_type_name"
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Введите своё имя"
-              required
-              minlength="2"
-              maxlength="30"
-              pattern="^(?!-)(?!.*--)[А-ЯЁа-яёa-zA-z]+(-[А-ЯЁа-яёa-zA-Z]+)?"
-            >
-            <span id="name-error" class="form__error">Введите не менее 2 символов</span>
-          </div>
-          <div class="form__field">
-            <span id="already-exists-error" class="form__error form__error_centre">Такой пользователь уже есть</span>
-            <button type="submit" name="button" class="form__button form__button_activ">Зарегистрироваться</button>
-          </div>
-        </form>
-        <p class="popup__text">или <span class="popup__link popup__colored-text">Войти</span></p>
-      </div>
-    </div>
+    </template>
 
-    <div class="popup popup__successful-signup">
-      <div class="popup__content">
-        <img class="popup__close-icon" src="./images/popup_close-icon_white.svg" alt="Иконка закрытия окна">
-        <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
-        <p class="popup__text popup__text_left"><span class="popup__colored-text popup__link">Войти</span></p>
+    <template id="cards-item-template" style="display: none;">
+      <div class="cards__item">
+        <img class="cards__image" src="./images/card_1.jpg" alt="Фото из статьи">
+        <div class="cards__label cards__label_activ"></div>
+        <div class="cards__message cards__message_news">Войдите, чтобы сохранять статьи</div>
+        <div class="cards__icon"></div>
+        <div class="cards__text-container">
+          <div>
+            <p class="cards__date">2 августа, 2019</p>
+            <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
+            <p class="cards__text">
+              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+              складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
+            </p>
+          </div>
+          <p class="cards__source">Лента.ру</p>
+        </div>
       </div>
-    </div>
+    </template>
 
   </main>
   <footer class="footer">
@@ -256,6 +105,6 @@
       </div>
     </div>
   </footer>
-  <script src="./scripts/news.b0fc3cb45abe21b52bb1.js"></script>
+  <script src="./scripts/news.d00860af9bc91cc3c10c.js"></script>
 </body>
 </html>
