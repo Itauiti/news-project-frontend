@@ -1,4 +1,5 @@
-const serverMain = NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://api.newsforyouproject.ru';
+const serverMain = 'https://api.newsforyouproject.ru';
+// const serverMain = NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://api.newsforyouproject.ru';
 const serverForNews = NODE_ENV === 'development' ? 'https://newsapi.org/v2/' : 'https://nomoreparties.co/news/v2/';
 
 const optionsForMainApi = {
