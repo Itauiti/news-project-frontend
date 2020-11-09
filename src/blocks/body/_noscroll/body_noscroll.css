@@ -1,12 +1,3 @@
-.body_noscroll::before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  position: absolute;
-  background-color: rgba( 0, 0, 0, 0.5);
-  z-index: 1;
+.body_noscroll {
+  overflow-y: hidden;
 }
-
-/* тут задуман noscroll */

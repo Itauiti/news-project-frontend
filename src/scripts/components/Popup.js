@@ -1,3 +1,5 @@
+import { body } from '../constants/domConstants';
+
 export class Popup {
   constructor(openedClass, burger) {
     this._popup = null;
@@ -20,6 +22,7 @@ export class Popup {
     if (window.matchMedia('screen and (max-width: 629px)').matches) {
       this._burger.hideHeaderBurger();
     }
+    body.classList.add('body_noscroll');
   }
 
   close = () => {
@@ -29,6 +32,7 @@ export class Popup {
     if (window.matchMedia('screen and (max-width: 629px)').matches) {
       this._burger.showHeaderBurger();
     }
+    body.classList.remove('body_noscroll');
   }
 
   _setListeners = (openPopupFunction) => {

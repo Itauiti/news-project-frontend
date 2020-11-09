@@ -1,3 +1,6 @@
+import { UserBlock } from '../components/UserBlock';
+import { toUpperCaseFirstCharacter } from '../utils/utils';
+
 export class NewsCard {
 
   static _template = document.querySelector('#cards-item-template').content;
@@ -30,6 +33,19 @@ export class NewsCard {
     return this._view;
   }
 
+  renderIcon = (isLoggedIn) => {
+    this._icon.classList.add('cards__icon_bookmark');
+    if(isLoggedIn === true) {
+      this._icon.addEventListener('click', this._loggedIn);
+    } else {
+      this._icon.removeEventListener('click', this._loggedIn);
+      this._icon.onmouseover = () => {
+        this._message.classList.add('cards__message_activ');
+        setTimeout(() => this._message.classList.remove('cards__message_activ'), 1500);
+      }
+    }
+  }
+
   _loggedIn = () => {
     event.stopPropagation();
     if (!this._icon.classList.contains('cards__icon_bookmark_activ')) {
@@ -44,19 +60,6 @@ export class NewsCard {
       .then(() => {
         this._icon.classList.remove('cards__icon_bookmark_activ');
       })
-    }
-  }
-
-  renderIcon = (isLoggedIn) => {
-    this._icon.classList.add('cards__icon_bookmark');
-    if(isLoggedIn === true) {
-      this._icon.addEventListener('click', this._loggedIn);
-    } else {
-      this._icon.removeEventListener('click', this._loggedIn);
-      this._icon.onmouseover = () => {
-        this._message.classList.add('cards__message_activ');
-        setTimeout(() => this._message.classList.remove('cards__message_activ'), 1500);
-      }
     }
   }
 
@@ -80,7 +83,15 @@ export class NewsCard {
           this._icon.removeEventListener('click', this._remove);
           this._view.remove();
 
-          location.reload();
+          this._mainApi.getArticles()
+          .then(res => {
+            const keywordsArr = res.map(item => {
+              return toUpperCaseFirstCharacter(item.keyword);
+            });
+            const userBlock = new UserBlock(keywordsArr);
+            userBlock.render();
+          })
+          .catch(err => console.log(err.message));
         })
         .catch(err => console.log(err));//аааааааааааааааа
     }

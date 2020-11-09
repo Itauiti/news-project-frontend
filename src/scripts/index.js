@@ -42,9 +42,6 @@ const logout = function() {
     headerAuthButton.removeEventListener('click', logout);
     headerAuthButton.addEventListener('click', openSigninPopup);
     localStorage.removeItem('username');
-    // while (resultsContainer.firstChild) {
-    //   resultsContainer.removeChild(resultsContainer.firstChild);
-    // };
   })
   .catch(err => console.log(err.message));//подумать над выводом ошибок, отдельную страницу?
 }

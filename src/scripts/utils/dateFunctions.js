@@ -48,18 +48,13 @@ const currentDate = function(){
 }
 
 const getDateAgo = function(date) {
-  let dateCopy = new Date(date);
+  const dateCopy = new Date(date);
 
   dateCopy.setDate(date.getDate() - 7);
-  const newDate = dateCopy.getDate();
   return `${dateCopy.getFullYear()}-${dateCopy.getMonth()+1}-${dateCopy.getDate()}`;
 }
 
 const currentDateToRef = currentDate();
 const getDateAgoToRef = getDateAgo(new Date());
-
-
-// alert(getDateAgo(new Date()));
-// alert(getDateAgo(new Date(2015, 0, 1)));
 
 export { getDateAgoToRef, currentDateToRef, changeDateFormat, changeMonthFormat };

@@ -16,18 +16,19 @@ export class NewsCardList {
   }
 
   renderCardsInParts = () => {
-    if (this._cardArr.length > 3) {
-      for (let i = 0; i < 3; i++) {
+    const numberOfCardsInRow = 3;
+    if (this._cardArr.length > numberOfCardsInRow) {
+      for (let i = 0; i < numberOfCardsInRow; i++) {
         this._cards.appendChild(this._cardArr[i]);
       }
-      this._cardArr.splice(0, 3);
+      this._cardArr.splice(0, numberOfCardsInRow);
       this._container.appendChild(this._view);
-    } else if (1 <= this._cardArr.length <= 3) {
+    } else if (1 <= this._cardArr.length <= numberOfCardsInRow) {
       this._button.style.display = "none";
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < numberOfCardsInRow; i++) {
         this._cards.appendChild(this._cardArr[i]);
       }
-      this._cardArr.splice(0, 3);
+      this._cardArr.splice(0, numberOfCardsInRow);
       this._container.appendChild(this._view);
     }
   }

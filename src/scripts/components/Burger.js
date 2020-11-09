@@ -11,6 +11,7 @@ export class Burger {
     header.classList.toggle(this._headerBackgroundColor);
     headerBurger.classList.toggle('header__menu_open_white');
     headerBurger.classList.toggle('header__menu_close_white');
+    body.classList.toggle('body_overlay');
     body.classList.toggle('body_noscroll');
   }
 
@@ -25,6 +26,7 @@ export class Burger {
     header.classList.remove(this._headerBackgroundColor);
     headerBurger.classList.remove('header__menu_open_white');
     headerBurger.classList.remove('header__menu_close_white');
+    body.classList.remove('body_overlay');
     body.classList.remove('body_noscroll');
     headerBurger.style.display = 'none';
   }
