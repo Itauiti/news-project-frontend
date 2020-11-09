@@ -1,0 +1,9 @@
+.cards__icon_trash {
+  background: url(../../../../images/cards_trash.svg) center no-repeat;
+  background-color: #fff;
+}
+
+.cards__icon_trash:hover {
+  background: url(../../../../images/cards_trash_hover.svg) center no-repeat;
+  background-color: #fff;
+}

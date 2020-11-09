@@ -1,0 +1,19 @@
+.header__menu {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  outline: none;
+  transition: opacity 0.3s linear;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header__menu:hover {
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 630px) {
+  .header__menu {
+    display: none;
+  }
+}

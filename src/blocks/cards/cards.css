@@ -1,0 +1,40 @@
+@import url(./__icon/cards__icon.css);
+@import url(./__image/cards__image.css);
+@import url(./__item/cards__item.css);
+@import url(./__label/cards__label.css);
+@import url(./__message/cards__message.css);
+@import url(./__source/cards__source.css);
+@import url(./__text/cards__text.css);
+@import url(./__title/cards__title.css);
+@import url(./__date/cards__date.css);
+@import url(./__text-container/cards__text-container.css);
+@import url(./__message/_activ/cards__message_activ.css);
+@import url(./__icon/_bookmark/cards__icon_bookmark.css);
+@import url(./__icon/_bookmark/_activ/cards__icon_bookmark_activ.css);
+@import url(./__icon/_trash/cards__icon_trash.css);
+@import url(./__message/_news/cards__message_news.css);
+@import url(./__label/_activ/cards__label_activ.css);
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  grid-gap: 9px;
+}
+
+@media screen and (min-width: 534px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cards {
+    grid-gap: 16px;
+  }
+}

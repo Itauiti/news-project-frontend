@@ -1,0 +1,11 @@
+.intro__search {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .intro__search {
+    flex-direction: row;
+  }
+}

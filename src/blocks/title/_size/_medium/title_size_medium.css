@@ -1,0 +1,18 @@
+.title_size_medium {
+  font-size: 30px;
+  line-height: 34px;
+}
+
+@media screen and (min-width: 1024px) {
+  .title_size_medium {
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .title_size_medium {
+    font-size: 40px;
+    line-height: 46px;
+  }
+}

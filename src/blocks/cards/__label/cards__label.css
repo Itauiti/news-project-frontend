@@ -1,0 +1,34 @@
+.cards__label {
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: none;
+}
+
+@media screen and (min-width: 534px) {
+  .cards__label {
+    top: 8px;
+    left: 8px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cards__label {
+    top: 16px;
+    left: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cards__label {
+    top: 24px;
+    left: 24px;
+  }
+}

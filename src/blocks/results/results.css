@@ -1,0 +1,7 @@
+@import url(../results/__container/results__container.css);
+@import url(../results/__title/results__title.css);
+@import url(../results/__button/results__button.css);
+
+.results {
+  background-color: #F5F6F7;
+}

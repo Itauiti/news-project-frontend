@@ -1,0 +1,29 @@
+.header__nav-container {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  font-weight: 500;
+  top: 57px;
+  left: 0;
+  right: 0;
+  padding: 24px 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+@media screen and (min-width: 534px) {
+  .header__nav-container {
+    padding: 24px 24px;
+  }
+}
+
+@media screen and (min-width: 630px) {
+  .header__nav-container {
+    display: flex;
+    align-items: center;
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    border: 0;
+  }
+}

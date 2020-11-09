@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Diploma">
+  <meta name="keywords" content="HTML5, CSS, SCSS, JS, Webpack">
+  <meta name="author" content="Irina Isaeva">
+  <link rel="icon" href="<%=require('./images/favicon.svg')%>" type="image/ico">
+  <title>Новости</title>
+  <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.news.css %>">
+</head>
+
+<body class="body">
+  <div class="double-section">
+    <header class="header header_line_black">
+      <div class="header__container container">
+        <div class="header__logo" lang="en">NewsExplorer</div>
+        <button class="header__menu header__menu_open_black"></button>
+        <div class="header__nav-container">
+          <nav class="navigation">
+            <ul class="navigation__container">
+              <li class="navigation__item">
+                <a class="navigation__link" href="index.html">Главная</a>
+              </li>
+              <li class="navigation__item navigation__item_articles">
+                <a class="navigation__link navigation__link_activ" href="news.html">Сохраненные статьи</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header__auth"><p class="header__auth_text"></p></div>
+        </div>
+      </div>
+    </header>
+    <section class="user-info">
+      <div class="user-info__container container">
+        <p class="user-info__subtitle">Сохранённые статьи</p>
+        <h1 class="user-info__title title title_size_medium"></h1>
+        <p class="user-info__text">
+          По ключевым словам: <span class="user-info__text user-info__text_word_1 user-info__text_bold" ></span>
+          <span class="user-info__text user-info__text_word_2 user-info__text_bold"></span><span class="user-info__text user-info__text_word_3">и <span class="user-info__text user-info__text_word_4 user-info__text_bold"></span></span>
+
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <main class="main">
+    <section class="results"></section>
+    <template id="results-template" style="display: none;">
+
+      <div class="results__container container">
+        <div class="cards">
+
+        </div>
+      </div>
+
+    </template>
+
+    <template id="cards-item-template" style="display: none;">
+      <div class="cards__item">
+        <img class="cards__image" src="<%=require('./images/card_1.jpg')%>" alt="Фото из статьи">
+        <div class="cards__label cards__label_activ"></div>
+        <div class="cards__message cards__message_news">Войдите, чтобы сохранять статьи</div>
+        <div class="cards__icon"></div>
+        <div class="cards__text-container">
+          <div>
+            <p class="cards__date">2 августа, 2019</p>
+            <h2 class="cards__title title title_size_small">Национальное достояние – парки</h2>
+            <p class="cards__text">
+              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+              складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
+            </p>
+          </div>
+          <p class="cards__source">Лента.ру</p>
+        </div>
+      </div>
+    </template>
+
+  </main>
+  <footer class="footer">
+    <div class="footer__container container">
+      <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
+      <div class="footer__nav-container">
+        <nav class="navigation">
+          <ul class="navigation__container">
+            <li class="navigation__item">
+              <a class="navigation__link" href="index.html">Главная</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="footer__social">
+          <a class="footer__icon footer__icon_github" href="https://github.com/Itauiti" target="_blank">
+            <img src="<%=require('./images/social_github.svg')%>" alt="Иконка сайта Гитхаб">
+          </a>
+          <a class="footer__icon footer__icon_fb" href="https://www.facebook.com/irina.isaeva.5/" target="_blank">
+            <img src="<%=require('./images/social_fb.svg')%>" alt="Иконка сайта Фейсбук">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="<%= htmlWebpackPlugin.files.chunks.news.entry %>"></script>
+</body>
+</html>

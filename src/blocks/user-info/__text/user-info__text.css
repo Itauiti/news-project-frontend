@@ -1,0 +1,19 @@
+.user-info__text {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0;
+  padding: 16px 0 0;
+}
+
+@media screen and (min-width: 768px) {
+  .user-info__text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .user-info__text {
+    font-size: 18px;
+    padding: 30px 0 0;
+  }
+}

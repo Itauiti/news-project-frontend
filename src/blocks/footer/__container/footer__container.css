@@ -1,0 +1,30 @@
+.footer__container {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__container {
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footer__container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}

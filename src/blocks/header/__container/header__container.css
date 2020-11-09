@@ -1,0 +1,23 @@
+.header__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  position: relative;
+  min-height: 56px;
+}
+
+@media screen and (min-width: 534px) {
+  .header__container {
+    padding-top: 14px;
+    padding-bottom: 12px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header__container {
+    padding-top: 19px;
+    padding-bottom: 13px;
+  }
+}

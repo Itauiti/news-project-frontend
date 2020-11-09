@@ -1,0 +1,14 @@
+.header__auth_icon_black {
+  padding-right: 26px;
+  position: relative;
+}
+
+.header__auth_icon_black::after {
+  position: absolute;
+  content: '';
+  width: 24px;
+  height: 24px;
+  right: 0px;
+  top: -1px;
+  background-image: url('../../../../../images/header_logout_black.png');
+}

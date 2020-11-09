@@ -1,0 +1,15 @@
+.loading-block__img {
+  margin-top: 5px;
+  margin-bottom: 16px;
+  width: 56px;
+  height: 56px;
+  border: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .loading-block__img {
+    margin-bottom: 31px;
+    width: 96px;
+    height: 96px;
+  }
+}

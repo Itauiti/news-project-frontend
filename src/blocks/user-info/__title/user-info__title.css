@@ -1,0 +1,15 @@
+.user-info__title {
+  max-width: 336px;
+}
+
+@media screen and (min-width: 1024px) {
+  .user-info__title {
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .user-info__title {
+    max-width: 530px;
+  }
+}

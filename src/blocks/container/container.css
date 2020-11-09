@@ -1,0 +1,35 @@
+.container {
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 1440px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media screen and (min-width: 534px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    padding-left: 104px;
+    padding-right: 104px;
+  }
+}

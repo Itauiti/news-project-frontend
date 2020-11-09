@@ -1,0 +1,20 @@
+@import url(./__container/navigation__container.css);
+@import url(./__link/navigation__link.css);
+@import url(./__item/navigation__item.css);
+@import url(./__link/_activ/navigation__link_activ.css);
+
+.navigation{
+  font-size: 18px;
+}
+
+@media screen and (min-width: 630px) {
+  .navigation{
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation{
+    font-size: 18px;
+  }
+}
