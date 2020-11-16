@@ -52,7 +52,7 @@
             pattern=".[^\s]{2,}"
           >
           <button class="intro__button">Искать</button>
-          <span id="intro-error" class="intro__error">Введите не менее 2 символов</span>
+          <span id="intro-error" class="intro__error"></span>
         </form>
       </div>
     </section>
@@ -141,7 +141,7 @@
                 required
                 pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
               >
-              <span id="email-login-error" class="form__error">Неправильный формат email</span>
+              <span id="email-login-error" class="form__error"></span>
             </div>
             <div class="form__field">
               <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
@@ -155,10 +155,10 @@
                 minlength="8"
                 pattern=".[^\s]{7,}"
               >
-              <span id="password-login-error" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+              <span id="password-login-error" class="form__error"></span>
             </div>
             <div class="form__field">
-              <span id="auth-error" class="form__error form__error_centre">Неверные логин или пароль</span>
+              <span id="auth-error" class="form__error form__error_centre"></span>
               <button type="submit" name="button" class="form__button form__button_login" disabled>Войти</button>
             </div>
           </form>
@@ -186,7 +186,7 @@
                 pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
                 required
               >
-              <span id="email-signup-error" class="form__error">Неправильный формат email</span>
+              <span id="email-signup-error" class="form__error"></span>
             </div>
             <div class="form__field">
               <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
@@ -200,7 +200,7 @@
                 pattern=".[^\s]{7,}"
                 required
               >
-              <span id="password-signup-error" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+              <span id="password-signup-error" class="form__error"></span>
             </div>
             <div class="form__field">
               <label for="name" class="form__label"><span class="popup__colored-text">Имя</span></label>
@@ -214,10 +214,10 @@
                 maxlength="30"
                 required
               >
-              <span id="name-error" class="form__error">Введите не менее 2 символов</span>
+              <span id="name-error" class="form__error"></span>
             </div>
             <div class="form__field">
-              <span id="auth-error" class="form__error form__error_centre">Такой пользователь уже есть</span>
+              <span id="auth-error" class="form__error form__error_centre"></span>
               <button type="submit" name="button" class="form__button" disabled>Зарегистрироваться</button>
             </div>
           </form>

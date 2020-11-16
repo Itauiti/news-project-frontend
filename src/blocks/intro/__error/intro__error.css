@@ -1,5 +1,5 @@
 .intro__error {
-  display: none;
+  display: block;
   position: absolute;
   top: 55px;
   left: 16px;
