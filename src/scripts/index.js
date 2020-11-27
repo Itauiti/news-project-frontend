@@ -61,7 +61,6 @@ headerBurger.addEventListener('click', () => {
   burger.openCloseHeaderBurger();
 });
 
-//formSearch подумать
 formSearch.addEventListener('submit', (event) => {
   event.preventDefault();
   while (resultsContainer.firstChild) {
@@ -84,9 +83,9 @@ formSearch.addEventListener('submit', (event) => {
           image: item.urlToImage || 'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
           keyword: data.keyword,
           link: item.url,
-          source: item.source.name || 'no text',
+          source: item.source.name || 'В статье нет текста :(',
           title: item.title,
-          text: item.description || 'no text',
+          text: item.description || 'В статье нет текста :(',
         };
         const newsCard = new NewsCard(cardsData, mainApi);
         const createdCard = newsCard.createCard();
