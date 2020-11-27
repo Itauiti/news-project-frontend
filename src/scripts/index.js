@@ -1,6 +1,6 @@
 import { Popup } from './components/Popup.js';
 import { Header } from './components/Header.js';
-import { Form } from './components/Form.js';
+import { FormValidation } from './components/FormValidation.js';
 import { MainApi } from './api/MainApi.js';
 import { NewsApi } from './api/NewsApi.js';
 import { NewsCard } from './components/NewsCard';
@@ -11,7 +11,7 @@ import { headerBurger, resultsContainer, formSearch, headerAuthButton } from './
 import { getDateAgoToRef, currentDateToRef, changeDateFormat, changeMonthFormat } from './utils/dateFunctions';
 import {
   errorMessages, popupFormClassLists, optionsForMainApi, optionsForNewsApi, popupClassLists, headerClassLists, mediaQueryList,
-  notLoggedHeaderText, nothingFoundTitle, nothingFoundText, errorNewsApiTitle, errorNewsApiText
+  notLoggedHeaderText, nothingFoundTitle, nothingFoundText, errorNewsApiTitle, errorNewsApiText, searchFormClassLists
 } from './constants/constants';
 
 import "../styles/index.css";
@@ -21,6 +21,9 @@ const newsApi = new NewsApi(optionsForNewsApi);
 const header = new Header(headerClassLists.iconColorWhite);
 const burger = new Burger(headerClassLists.headerBackgroundColorDark);
 const popup = new Popup(popupClassLists.openedClassPopup, burger);
+
+const formSearchClass = new FormValidation(formSearch, searchFormClassLists, errorMessages);
+formSearchClass.initialization();
 
 //Рендер авторизованной/неавторизованной шапки страницы
 mainApi.getUserData()
@@ -110,7 +113,7 @@ const openSigninPopup = function() {
   popup.setContent(popupClassLists.popupLogin, openSignupPopup);
   popup.open();
   const formLogin = document.forms.login;
-  const formLoginClass = new Form(formLogin, popupFormClassLists, errorMessages);
+  const formLoginClass = new FormValidation(formLogin, popupFormClassLists, errorMessages);
   formLoginClass.initialization();
   formLogin.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -139,7 +142,7 @@ const openSignupPopup = function() {
   popup.setContent(popupClassLists.popupSignup, openSigninPopup);
   popup.open();
   const formSignup = document.forms.signup;
-  const formSignupClass = new Form(formSignup, popupFormClassLists, errorMessages);
+  const formSignupClass = new FormValidation(formSignup, popupFormClassLists, errorMessages);
   formSignupClass.initialization();
   formSignup.addEventListener('submit', (event) => {
     event.preventDefault();

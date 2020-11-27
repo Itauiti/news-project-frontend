@@ -1,8 +1,17 @@
-export class Form {
+export class FormValidation {
   constructor(form, formClassLists, errorMessages) {
     this._form = form;
     this._errorMessages = errorMessages;
     this._formClassLists = formClassLists;
+  }
+
+  initialization = () => {
+    this._setEventListeners();
+    const error = this._form.querySelectorAll(this._formClassLists.errorClass);
+    this._error = error;
+    this._inputs = Array.from(this._form.querySelectorAll(this._formClassLists.inputClass));
+    const submit = this._form.querySelector(this._formClassLists.buttonClass);
+    this._submit = submit;
   }
 
   setServerError = (message) => {
@@ -13,16 +22,6 @@ export class Form {
 
   _setEventListeners = () => {
     this._form.addEventListener('input', this._validateInputElement, true);
-  }
-
-  initialization = () => {
-    this._setEventListeners();
-
-    const error = this._form.querySelectorAll(this._formClassLists.errorClass);
-    this._error = error;
-    this._inputs = Array.from(this._form.querySelectorAll(this._formClassLists.inputClass));
-    const submit = this._form.querySelector(this._formClassLists.buttonClass);
-    this._submit = submit;
   }
 
   _setSubmitButtonState = (state) => {
