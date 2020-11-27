@@ -28,10 +28,13 @@ export class UserBlock {
 
   _getTextTextcontent = () => {
     //текст выводит два самых популярных тега пользователя и показыает, какое кол-во тегов у него еще есть (если есть)
+
+    //считаем кол-во повторений тегов
     this._numberOfrepetitions = this._keywordsArr.reduce(function(acc, el) {
       acc[el] = (acc[el] || 0) + 1;
       return acc;
     }, {});
+    //создание массива отсортированных тегов (от большего у меньшему)
     const arr = [];
     for (let y in this._numberOfrepetitions) {
       arr.push([y, this._numberOfrepetitions[y]]);
@@ -39,16 +42,18 @@ export class UserBlock {
     arr.sort(function(a, b) {
       return b[1] - a[1];
     });
-
+    //формирование строки с правильной последовательностью в зависимости от кол-ва тегов
+    const MOST_POPULAR_TEG = arr[0].splice(0, 1);
     if (arr.length === 1) {
-      this._wordOne.textContent = arr[0].splice(0, 1);
+      this._wordOne.textContent = MOST_POPULAR_TEG;
+      this._wordTwo.style.display = 'none';
       this._wordTree.style.display = 'none';
     } else if ((arr.length === 2)) {
-      this._wordOne.textContent = `${arr[0].splice(0, 1)}, `;
+      this._wordOne.textContent = `${MOST_POPULAR_TEG}, `;
       this._wordTwo.textContent = arr[1].splice(0, 1);
       this._wordTree.style.display = 'none';
     } else {
-      this._wordOne.textContent = `${arr[0].splice(0, 1)}, `;
+      this._wordOne.textContent = `${MOST_POPULAR_TEG}, `;
       this._wordTwo.textContent = `${arr[1].splice(0, 1)} `;
       const rest = arr.length - 2;
       this._wordFour.textContent = declOfNum(rest, [`${rest}-ому другому`, `${rest}-м другим`, `${rest}-и другим`])
