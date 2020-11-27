@@ -17,6 +17,4 @@
   box-sizing: border-box;
 }
 
-.form__input:invalid:not(:placeholder-shown) + .form__error {
-  display: block;
-}
+

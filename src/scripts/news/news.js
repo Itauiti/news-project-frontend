@@ -6,7 +6,7 @@ import { UserBlock } from '../components/UserBlock';
 import { Burger } from '../components/Burger';
 
 import { headerBurger, resultsContainer, headerAuthButton } from '../constants/domConstants';
-import { optionsForMainApi, mediaQueryList, notLoggedHeaderText, nothingFoundText, headerClassLists, noArticlesText } from '../constants/constants';
+import { optionsForMainApi, mediaQueryList, notLoggedHeaderText, headerClassLists } from '../constants/constants';
 import { toUpperCaseFirstCharacter } from '../utils/utils';
 
 import "../../styles/news.css";
@@ -24,7 +24,6 @@ mainApi.getUserData()
   location = './';
 });
 
-//повтор функции!!!!!!!!!!
 const logout = function() {
   mainApi.logoutUser()
   .then(() => {
@@ -54,7 +53,6 @@ mainApi.getArticles()
   if (keywordsArr.length === 0) {
     userBlock.render();
   } else {
-
     userBlock.render();
     res.forEach(item => {
       const cardsData = {

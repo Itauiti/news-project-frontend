@@ -43,16 +43,13 @@
           <input
             class="intro__input"
             type="text"
-            id="search"
+            id="intro"
             name="search"
             placeholder="Введите тему новости"
             required
-            minlength="2"
-            maxlength="30"
-            pattern=".[^\s]{2,}"
           >
-          <button class="intro__button">Искать</button>
-          <span id="intro-error" class="intro__error">Введите не менее 2 символов</span>
+          <button class="intro__button" disabled>Искать</button>
+          <span id="intro-error" class="intro__error"></span>
         </form>
       </div>
     </section>
@@ -108,17 +105,17 @@
           <source media="(min-width: 1440px)" srcset="<%=require('./images/about_avatar_1440.jpg')%>">
           <source media="(min-width: 1024px)" srcset="<%=require('./images/about_avatar_1024.jpg')%>">
           <source media="(min-width: 768px)" srcset="<%=require('./images/about_avatar_768.jpg')%>">
-          <img src="<%=require('./images/about_avatar_320.jpg')%>" alt="Фото автора сайта">
+          <img src="<%=require('./images/about_avatar_320.jpg')%>" alt="Фото для примера">
         </picture>
         <div class="about__text-container">
-          <h2 class="title title_size_medium">Об авторе</h2>
+          <h2 class="title title_size_medium">О сайте</h2>
           <p class="about__text">
-            Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь,
-            какими технологиями разработки владеете.
+            Дипломный проект Ирины Исаевой в ЯндексПрактикуме. Двухстраничный адаптивный сайт по поиску новостей и сохранению статей в личный кабинет (после регистрации и авторизации).
           </p>
           <p class="about__text">
-            Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились,
-            и чем можете помочь потенциальным заказчикам.
+            На главной странице по ключевому слову отображаются новости за последние 7 дней, которые можно добавить в личный кабинет.
+            Страница с сохраненными статьями (для авторизованных пользователей) позволяет просматривать добавленные ранее статьи или удалить их из списка сохраненных,
+             а также посмотреть статистику по количеству добавленных карточек и популярные темы запроса пользователя.
           </p>
         </div>
       </div>
@@ -141,7 +138,7 @@
                 required
                 pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
               >
-              <span id="email-login-error" class="form__error">Неправильный формат email</span>
+              <span id="email-login-error" class="form__error"></span>
             </div>
             <div class="form__field">
               <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
@@ -155,10 +152,10 @@
                 minlength="8"
                 pattern=".[^\s]{7,}"
               >
-              <span id="password-login-error" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+              <span id="password-login-error" class="form__error"></span>
             </div>
             <div class="form__field">
-              <span id="auth-error" class="form__error form__error_centre">Неверные логин или пароль</span>
+              <span id="auth-error" class="form__error form__error_centre"></span>
               <button type="submit" name="button" class="form__button form__button_login" disabled>Войти</button>
             </div>
           </form>
@@ -186,7 +183,7 @@
                 pattern="(?!.*--)(([a-zA-Z0-9]{1,2})|([a-zA-Z0-9][\w-]+[a-zA-Z0-9]))@([\w-]+\.)+[a-zA-z]+"
                 required
               >
-              <span id="email-signup-error" class="form__error">Неправильный формат email</span>
+              <span id="email-signup-error" class="form__error"></span>
             </div>
             <div class="form__field">
               <label for="password" class="form__label"><span class="popup__colored-text">Пароль</span></label>
@@ -200,7 +197,7 @@
                 pattern=".[^\s]{7,}"
                 required
               >
-              <span id="password-signup-error" class="form__error">Введите не менее 8 символов (без пробелов)</span>
+              <span id="password-signup-error" class="form__error"></span>
             </div>
             <div class="form__field">
               <label for="name" class="form__label"><span class="popup__colored-text">Имя</span></label>
@@ -214,10 +211,10 @@
                 maxlength="30"
                 required
               >
-              <span id="name-error" class="form__error">Введите не менее 2 символов</span>
+              <span id="name-error" class="form__error"></span>
             </div>
             <div class="form__field">
-              <span id="auth-error" class="form__error form__error_centre">Такой пользователь уже есть</span>
+              <span id="auth-error" class="form__error form__error_centre"></span>
               <button type="submit" name="button" class="form__button" disabled>Зарегистрироваться</button>
             </div>
           </form>
