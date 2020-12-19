@@ -21,6 +21,7 @@ export class NewsCard {
     this._keyword = this._view.querySelector('.cards__label');
     this._keyword.textContent = this._cardsData.keyword;
     this._title = this._view.querySelector('.cards__title');
+    this._title.onclick = () => window.open(this._link);
     this._title.textContent = this._cardsData.title;
     this._text = this._view.querySelector('.cards__text');
     this._text.textContent = this._cardsData.text;
@@ -29,7 +30,7 @@ export class NewsCard {
     this._icon = this._view.querySelector('.cards__icon');
     this._message = this._view.querySelector('.cards__message');
     this._link = this._cardsData.link;
-    this._view.onclick = () => window.open(this._link);
+    // this._view.onclick = () => window.open(this._link);
     return this._view;
   }
 
