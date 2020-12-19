@@ -30,7 +30,6 @@ export class NewsCard {
     this._icon = this._view.querySelector('.cards__icon');
     this._message = this._view.querySelector('.cards__message');
     this._link = this._cardsData.link;
-    // this._view.onclick = () => window.open(this._link);
     return this._view;
   }
 
@@ -48,7 +47,6 @@ export class NewsCard {
   }
 
   _loggedIn = () => {
-    event.stopPropagation();
     if (!this._icon.classList.contains('cards__icon_bookmark_activ')) {
       this._mainApi.createArticle(this._keyword.textContent, this._title.textContent, this._text.textContent, this._date.textContent, this._source.textContent, this._link, this._image.src)
       .then((res) => {
@@ -76,7 +74,6 @@ export class NewsCard {
   }
 
   _remove = () => {
-    event.stopPropagation();
     if (window.confirm("Вы действительно хотите удалить эту карточку?")) {
       this._mainApi.removeArticle(this._id)
         .then((res) => {
@@ -94,7 +91,7 @@ export class NewsCard {
           })
           .catch(err => console.log(err.message));
         })
-        .catch(err => console.log(err));//аааааааааааааааа
+        .catch(err => console.log(err));
     }
   }
 }

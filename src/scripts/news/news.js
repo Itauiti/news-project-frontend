@@ -21,14 +21,14 @@ mainApi.getUserData()
   headerAuthButton.addEventListener('click', logout);
 })
 .catch(() => {
-  location = './';
+  document.location.href = 'http://newsforyouproject.ru';
 });
 
 const logout = function() {
   mainApi.logoutUser()
   .then(() => {
     header.render(false, notLoggedHeaderText);
-    location = './';
+    document.location.href = 'http://newsforyouproject.ru';
     headerAuthButton.removeEventListener('click', logout);
     headerAuthButton.addEventListener('click', openSigninPopup);
     localStorage.removeItem('username');

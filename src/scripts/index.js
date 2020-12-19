@@ -41,12 +41,12 @@ const logout = function() {
   mainApi.logoutUser()
   .then(() => {
     header.render(false, notLoggedHeaderText);
-    location = './';
+    document.location.href = 'http://newsforyouproject.ru';
     headerAuthButton.removeEventListener('click', logout);
     headerAuthButton.addEventListener('click', openSigninPopup);
     localStorage.removeItem('username');
   })
-  .catch(err => console.log(err.message));//подумать над выводом ошибок, отдельную страницу?
+  .catch(err => console.log(err.message));
 }
 
 window.addEventListener('keyup', (event) => {
